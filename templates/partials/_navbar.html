@@ -12,9 +12,23 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
             <!--Highlight the page name e.g if in Home page then Home is highlighted-->
+            <!--If logged in Home will take to dashboard-->
+            {% if user.is_authenticated %}
+            <li 
+              {% if 'dashboard' in request.path %}
+              class="nav-item active mr-3"
+              {% else %}
+              class="nav-item  mr-3"
+              {% endif %}
+            >
             <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
+            <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+          </li>
+          {% else %} 
+          <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
             <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
+          {% endif %} 
           <li class="nav-item mr-3">
             <a class="nav-link" href="#"></a>
           </li>

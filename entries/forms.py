@@ -22,12 +22,12 @@ class Hsc_equivlent_form(ModelForm):
         model = Hsc_equivlent
         fields = '__all__'
 
-class Grade_history_form(ModelForm):
+class Semester_history_form(ModelForm):
     class Meta:
-        model = Grade_history
+        model = Semester_history
         fields = '__all__'
 
 class Financial_history_form(ModelForm):
     class Meta:
-        model = financial_history
+        model = Financial_history
         fields = '__all__'
