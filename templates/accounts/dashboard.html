@@ -2,6 +2,58 @@
 
 {% block content %} 
 
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">Admin Dashboard</h1>
+          <p class="lead">Manage Student Data </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!--Alerts-->
+  {% include 'partials/_alerts.html' %} 
+
+  <section id="dashboard" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Welcome {{ user.first_name}} </h2>
+          <br>
+          <br>
+    
+          <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Admin Tools</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Add An Entry </td>
+                <td>
+                  <a class="btn btn-light" href="#">Add</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Edit An Entry </td>
+                <td>
+                  <a class="btn btn-light" href="#">Edit</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Delete An Entry</td>
+                <td>
+                  <a class="btn btn-light" href="#">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock %} 

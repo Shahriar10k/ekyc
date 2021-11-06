@@ -1,0 +1,11 @@
+django.txt
+[pip install django]
+
+psycopg2
+[pip install psycopg2]
+
+psycopg2-binary
+[pip install psycopg2-binary]
+
+*may need to download visual studio build tools for psycopg*
+[https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16]
