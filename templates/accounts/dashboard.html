@@ -23,7 +23,6 @@
           <h2>Welcome {{ user.first_name}} </h2>
           <br>
           <br>
-    
           <table class="table">
             <thead>
                 <tr>
@@ -32,15 +31,15 @@
             </thead>
             <tbody>
               <tr>
-                <td>Add An Entry </td>
+                <td>Create An Entry </td>
                 <td>
-                  <a class="btn btn-light" href="#">Add</a>
+                  <a class="btn btn-light" href="{% url 'create_entry' %}">Create</a>
                 </td>
               </tr>
               <tr>
-                <td>Edit An Entry </td>
+                <td>Update An Entry </td>
                 <td>
-                  <a class="btn btn-light" href="#">Edit</a>
+                  <a class="btn btn-light" href="#">Update</a>
                 </td>
               </tr>
               <tr>
