@@ -7,7 +7,9 @@ class Student_info_form(ModelForm):
     class Meta:
         model = Student_info
         fields = '__all__'
-    
+    def __init__(self, *args, **kwargs):
+        super(Student_info_form, self).__init__(*args, **kwargs)
+        self.fields['photo'].widget.attrs.update({'class': 'btn btn-outline-secondary '})
     
 
 class Personal_info_form(ModelForm):
