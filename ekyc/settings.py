@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'entries.apps.EntriesConfig',
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+CRISPY_TEMPLATE_PACK= 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,7 +132,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'ekyc/static')]
 
 # Media Folder Settings
-MEDIA_ROOT = os.path.join(BASE_DIR, 'btre/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'ekyc/media')
 MEDIA_URL = '/media/'
 
 # Default primary key field type

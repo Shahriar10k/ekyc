@@ -1,5 +1,7 @@
 {% extends 'base.html' %} 
 
+{% load crispy_forms_tags %}
+
 {% block content %} 
 
 
@@ -11,24 +13,20 @@
           <div class="card">
             <div class="card-header bg-primary text-white">
               <h4>
-                <i class="fas fa-user-plus"></i> Register</h4>
+                <i class="fas fa-user-plus"></i> Create A Student Entry</h4>
             </div>
             <div class="card-body">
 
                 <!--Alerts-->
                 {% include 'partials/_alerts.html' %} 
-                <form action="" method="POST">
+                <form action= "{% url 'create_entry' %}" method="POST" enctype="multipart/form-data">
                   {% csrf_token %} 
                 <div class="form-group">
-                  {{form1.as_p}}
-                  {{form2.as_p}}
-                  {{form3.as_p}}
-                  {{form4.as_p}}
-                  {{form5.as_p}}
-                  {{form6.as_p}}
+                  {{form1|crispy}}                 
+                  
                 </div>
                 
-                <input type="submit" value="Register" class="btn btn-secondary btn-block">
+                <input type="submit" value="Submit" class="btn btn-outline-secondary">
               </form>
             </div>
           </div>
@@ -37,23 +35,6 @@
     </div>
   </section>
 
-
-
-
-
-
-    
-  <!-- <form action=" " method="POST">
-    {% csrf_token %} 
-    
-    {{form1.as_p}}
-    {{form2.as_p}}
-    {{form3.as_p}}
-    {{form4.as_p}}
-    {{form5.as_p}}
-    {{form6.as_p}}
-    
-  </form> -->
 
 
 

@@ -13,5 +13,8 @@ django-autoslug
 pillow
 [pip install pillow]
 
+crispy
+[pip install django-crispy-forms]
+
 *may need to download visual studio build tools for psycopg*
 [https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16]
