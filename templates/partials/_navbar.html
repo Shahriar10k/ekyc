@@ -29,9 +29,25 @@
             <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
           {% endif %} 
-          <li class="nav-item mr-3">
+          
+          <!--Highlight the page name e.g if in Home page then Home is highlighted-->
+          <!--If logged in StudentList will take to Student List-->
+          {% if user.is_authenticated %}
+            <li 
+              {% if 'dashboard' in request.path %}
+              class="nav-item active mr-3"
+              {% else %}
+              class="nav-item  mr-3"
+              {% endif %}
+            >
+            <li {% if 'StudentList' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
+            <a class="nav-link" href="{% url 'StudentList' %}">Student List</a>
+          </li>
+          {% else %} 
+          <li>
             <a class="nav-link" href="#"></a>
           </li>
+          {% endif %} 
           
         </ul>
 
