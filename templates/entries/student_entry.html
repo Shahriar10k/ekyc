@@ -1,25 +1,161 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% block content %} 
+{% block content %}
 
-<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-pills card-header-pills">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-  </div>
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-6">Student Profile</h1>
+          <p class="lead">Manage Student Data </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Alerts-->
+  {% include 'partials/_alerts.html' %}
+
+  <section id="dashboard" class="py-4">
+
+
+        <div class="row">
+    <div class="col-2">
+        <div class="center">
+      <ul class="nav nav-list" style="top: 0px;">
+                                <li>
+                                    <a href="#">
+                                        <span class="menu-text">Grade History</span>
+                                    </a>
+                                </li>
+                            </ul>
+            </div>
+    </div>
+
+    <div class="col-2">
+        <div class="center">
+            <span class="profile-picture">
+                <img id="avatar" class="editable img-responsive" alt="Avatar" src="http://127.0.0.1:8000/static/img/stu.jpg" width="160">
+            </span>
+        </div>
+    </div>
+        <div class="col-4">
+            <h4 class="blue">
+                <span class="middle">General Info</span></h4>
+                <div class="profile-user-info">
+                    <div class="row">
+                        <div class="col"> Full Name: </div>
+                        <div class="col-md-8">
+                            Sabbir Ahmed Sozol
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">Student ID:</div>
+
+                        <div class="col-md-8">
+                            <span>182192642</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">Enrolled In:</div>
+
+                        <div class="col-md-8">
+                            <span>BS in CSE</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">Department: </div>
+
+                        <div class="col-md-8">
+                            <span>ECE</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col"> Batch: </div>
+
+                        <div class="col-md-8">
+                            <span>Summer 2018</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col"> Current CGPA: </div>
+
+                        <div class="col-md-8">
+                            <span>2.00</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col"> Credit Passed: </div>
+
+                        <div class="col-md-8">
+                            <span>104</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+        </div>
+        <div class="col-4">
+            <div class="card" style="width: 25rem;">
+
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-outline-danger">Go somewhere</a>
-  </div>
+    <h4 class="card-title">Personal Info</h4>
+    <div class="row">
+        <div class="col"> Father Name: </div>
+        <div class="col-md-7">
+            Md. Azizur Rahman
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col"> Mother Name: </div>
+        <div class="col-md-7">
+            Mst. sabina Yesmin
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col"> Contact No: </div>
+        <div class="col-md-7">
+            0176000040
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col"> Blood Group: </div>
+        <div class="col-md-7">
+            O+
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col"> Covid-Vac: </div>
+        <div class="col-md-7">
+            Taken
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col"> NID No: </div>
+        <div class="col-md-7">
+            987 4586 475
+        </div>
+    </div>
+
+
 </div>
-{% endblock %} 
+                <a href="#" class="btn btn-outline-dark">Edit Information</a>
+        </div>
+
+
+
+
+  </section>
+{% endblock %}
