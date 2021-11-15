@@ -21,21 +21,17 @@
 
         <div class="row">
     <div class="col-2">
-        <div class="center">
-      <ul class="nav nav-list" style="top: 0px;">
-                                <li>
-                                    <a href="#">
-                                        <span class="menu-text">Grade History</span>
-                                    </a>
-                                </li>
-                            </ul>
-            </div>
+        <div class="sidebar">
+            <li><a class="active" href="">Grade History</a></li>
+            <li><a href="#news">News</a></li>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
     </div>
-
+    </div>
     <div class="col-2">
         <div class="center">
             <span class="profile-picture">
-                <img id="avatar" class="editable img-responsive" alt="Avatar" src="http://127.0.0.1:8000/static/img/stu.jpg" width="160">
+                 <img src="http://127.0.0.1:8000/static/img/stu.jpg" class="img-thumbnail" alt="Cinque Terre">
             </span>
         </div>
     </div>
@@ -46,7 +42,7 @@
                     <div class="row">
                         <div class="col"> Full Name: </div>
                         <div class="col-md-8">
-                            Sabbir Ahmed Sozol
+                            <span>{{stu_uid.first_name}} {{stu_uid.last_name}}</span>
                         </div>
                     </div>
 
@@ -54,7 +50,7 @@
                         <div class="col">Student ID:</div>
 
                         <div class="col-md-8">
-                            <span>182192642</span>
+                            <span>{{stu_uid.nsu_id}}</span>
                         </div>
                     </div>
 
@@ -106,6 +102,9 @@
             <div class="card" style="width: 25rem;">
 
   <div class="card-body">
+      <div class="float-right">
+      <button class="btn btn-outline-warning" style="right" type="submit"><a href=""><i class="far fa-edit"></i></a></button>
+      </div>
     <h4 class="card-title">Personal Info</h4>
     <div class="row">
         <div class="col"> Father Name: </div>
@@ -151,7 +150,6 @@
 
 
 </div>
-                <a href="#" class="btn btn-outline-dark">Edit Information</a>
         </div>
 
 

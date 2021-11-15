@@ -37,17 +37,18 @@
             <th scope="col">Delete</th>
           </tr>
           </thead>
-          <tbody>
 
           {% for student in student_list %}
+          <form action="student_entry/" method="post" id="idpass">
+            {% csrf_token %}
           <tr>
             <td>{{student.nsu_id}}</td>
             <td>{{student.first_name}} {{student.last_name}}</td>
             <td>{{student.email}}</td>
-            <td><button class="btn btn-outline-info" type="submit"><a href="{% url 'student_entry' %}"><i class="far fa-eye"></a></button></td>
+            <td><button class="btn btn-outline-info" name="viewdetailsID" value="{{student.nsu_id}}" type="submit"><i class="far fa-eye"></i></button></td>
             <td><button class="btn btn-outline-warning" type="submit"><a href="{% url 'update_entry' student.id %}"><i class="far fa-edit"></i></a></button></td>
             <td><button class="btn btn-outline-danger" type="submit"><a href="#"><i class="far fa-trash-alt"></i></a></button></td>
-          </tr>
+          </tr></form>
           </tbody>
           {% endfor %}
 
