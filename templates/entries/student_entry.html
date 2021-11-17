@@ -20,24 +20,26 @@
 
 
         <div class="row">
-    <div class="col-2">
-        <div class="sidebar">
-            <li><a class="active" href="">Grade History</a></li>
-            <li><a href="#news">News</a></li>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-    </div>
-    </div>
-    <div class="col-2">
+
+    <div class="col-3 pl-5"  >
         <div class="center">
             <span class="profile-picture">
-                 <img src="http://127.0.0.1:8000/static/img/stu.jpg" class="img-thumbnail" alt="Cinque Terre">
+                 <img src="{{ stu_uid.photo.url }}" class="img-thumbnail" alt="Cinque Terre" width="100px !important;">
             </span>
         </div>
     </div>
-        <div class="col-4">
-            <h4 class="blue">
-                <span class="middle">General Info</span></h4>
+            <div class="col-9">
+                <nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profile</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Academic Info</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Financial Info</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+           <div class="col" style="float:left; width:50%;">
+                <h4><span class="middle">General Info</span></h4>
                 <div class="profile-user-info">
                     <div class="row">
                         <div class="col"> Full Name: </div>
@@ -93,13 +95,10 @@
                             <span>104</span>
                         </div>
                     </div>
-
                 </div>
-
-
-        </div>
-        <div class="col-4">
-            <div class="card" style="width: 25rem;">
+                </div>
+<div class="col" style="float:right; width:50%;">
+      <div class="card border-light mb-3" style="width: 25rem;">
 
   <div class="card-body">
       <div class="float-right">
@@ -133,48 +132,59 @@
     <div class="row">
         <div class="col"> Father Name: </div>
         <div class="col-md-7">
-            Md. Azizur Rahman
+            Sheikh Mujib
         </div>
     </div>
 
       <div class="row">
         <div class="col"> Mother Name: </div>
         <div class="col-md-7">
-            Mst. sabina Yesmin
+            fozila
         </div>
     </div>
 
       <div class="row">
         <div class="col"> Contact No: </div>
         <div class="col-md-7">
-            0176000040
+            05364785232
         </div>
     </div>
 
       <div class="row">
         <div class="col"> Blood Group: </div>
         <div class="col-md-7">
-            O+
+            O-
         </div>
     </div>
 
       <div class="row">
         <div class="col"> Covid-Vac: </div>
         <div class="col-md-7">
-            Taken
+            Not Taken
         </div>
     </div>
 
       <div class="row">
         <div class="col"> NID No: </div>
         <div class="col-md-7">
-            987 4586 475
+            1952 1971 7
         </div>
     </div>
 
 
 </div>
         </div>
+</div></div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+
+
+
+
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...new pillll</div>
+</div>
+            </div>
 
 
 
