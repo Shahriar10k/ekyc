@@ -38,7 +38,7 @@ def StudentList(request):
 
 def studentEntry(request):
     viewdetailsID = request.POST.get('viewdetailsID')
-    print(viewdetailsID)
+    #print(viewdetailsID)
     stu_obj = Student_info.objects.get(nsu_id = viewdetailsID)
     stu_uid = stu_obj.id
     stu_u_obj = Student_info.objects.get(id=stu_uid)
@@ -83,3 +83,4 @@ def createCourse(request):
     context = {'form1':form1 ,}
 
     return render(request, 'entries/add_course.html', context)
+
