@@ -76,14 +76,15 @@ def StudentList(request):
     context = {'student_list': student_list, 'stuFilter': stuFilter}
     return render(request, 'entries/student_list.html', context)
 
-
 # Student profile General Info
 def studentEntry(request):
     viewdetailsID = request.POST.get('viewdetailsID')
     #print(viewdetailsID)
     stu_obj = Student_info.objects.get(nsu_id=viewdetailsID)
     stu_uid = stu_obj.id
+    stu_u_obj = Student_info.objects.get(id=stu_uid)
     #print(stu_uid)
+    context = {'stu_uid': stu_u_obj}
     return render(request, 'entries/student_entry.html', context)
 
 
