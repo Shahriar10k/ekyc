@@ -58,7 +58,7 @@ class Personal_info(models.Model):
     date_of_birth = models.DateField(blank= True, null=True)
     address = models.TextField(max_length=100,blank= True, null=True)
     religion = models.CharField(max_length=10,blank= True, null=True)
-    citizenship = models.CharField(max_length=10,blank= True, null=True)
+    citizenship = models.CharField(max_length=15,blank= True, null=True)
     marital_status = models.CharField(max_length=20,choices=MARITAL_STATUS,blank= True, null=True)
     blood_group = models.CharField(max_length=20,choices=BLOOD_TYPE,blank= True, null=True)
     covid19_vax_status = models.CharField(max_length=20, choices=VAX_STATUS,blank= True, null=True)

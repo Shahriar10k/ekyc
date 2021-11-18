@@ -16,7 +16,7 @@
 
 
                         {% include 'partials/_alerts.html' %}
-                        <form action="{% url 'update_personal_info' %}" method="POST" enctype="text/plain">
+                        <form action="{% url 'update_personal_info' %}" method="POST" enctype="multipart/form-data">
 
                             {% csrf_token %}
 

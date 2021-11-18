@@ -26,7 +26,29 @@ class Personal_info_form(ModelForm):
     covid19_vax_status = forms.ChoiceField(choices=VAX_STATUS, widget=forms.RadioSelect)
     class Meta:
         model = Personal_info
-        fields = '__all__'
+        fields = [
+            'id',
+            'father_name',
+            'mother_name',
+            'gender',
+            'date_of_birth',
+            'religion',
+            'citizenship',
+            'marital_status',
+            'blood_group',
+            'covid19_vax_status',
+            'address',
+            'contact_number',
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super(Personal_info_form, self).__init__(*args, **kwargs)
+                
+        self.fields['id'].label = "Student's ID"
+        self.fields['father_name'].label = "Father's name"
+        self.fields['mother_name'].label = "Mother's name"
+        self.fields['date_of_birth'].label = "Date of birth (YYYY-MM-DD):"
+        self.fields['covid19_vax_status'].label = "COVID-19 Vaccination Status"
 
     
 class Ssc_equivlent_form(ModelForm):

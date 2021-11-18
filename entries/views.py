@@ -66,26 +66,34 @@ def updateEntry(request):
 
 # view for updating personal information
 def updatePersonalInfo(request):
-    stu_uid1 = request.POST.get('viewdetailsID')            
-        # the above line is for checking purpose; original: stu_uid1 = request.POST.get('viewdetailsID')
-    stu_uid = '0dfc94b1-42b6-487b-87d9-172de23f4a94'        
-        # the above line is for checking purpose; otherwise, delete it
-    print(stu_uid1)
-        # the above line is for checking purpose; otherwise, delete it
+    if 'viewdetailsID' in request.POST:
+        stu_uid = request.POST.get('viewdetailsID')
+    
+        print(stu_uid)
 
-    if not Personal_info.objects.filter(id_id=stu_uid).exists():
-        student = Personal_info(id_id=stu_uid)
-        student.save()
+        if not Personal_info.objects.filter(id_id=stu_uid).exists():
+            student = Personal_info(id_id=stu_uid)
+            student.save()
+            print('does not exist')
 
-    student = Personal_info.objects.get(id_id=stu_uid)
-    form = Personal_info_form(instance=student)
+        student = Personal_info.objects.get(id_id=stu_uid)
+        #print(student.id_id)
+        form = Personal_info_form(instance=student)
+
+    else:
+        stu_id = request.POST.get('id')
+        student = Personal_info.objects.get(id_id=stu_id)
+        form = Personal_info_form(instance=student)
+    
     context = {'form' : form}
 
     if request.method == 'POST':
         form = Personal_info_form(request.POST, instance=student)
         if form.is_valid():
             form.save()
+
             messages.success(request, f'Personal Information Updated.')
+            #return redirect('student_entry')
             return render(request, 'entries/update_personal_info.html', context)
     else:
         form = Personal_info_form()

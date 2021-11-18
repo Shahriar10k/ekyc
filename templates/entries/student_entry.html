@@ -109,11 +109,10 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                     Personal Info
-                                    <form action="update_personal_info/" method="POST">
+                                    <form action="update_personal_info/" method="POST" style="display:inline;">
                                         {% csrf_token %}
-                                        <button class="btn btn-outline-warning" name="viewdetailsID" value="{{stu_uid.id}}" type="submit"><i class="far fa-edit">PI</i></button>
+                                        <button class="btn btn-outline-warning" name="viewdetailsID" value="{{stu_uid.id}}" type="submit"><i class="far fa-edit"></i></button>
                                     </form>
-                                    <!-- <a href="{% url 'update_personal_info' %}"><button class="btn btn-outline-warning"><i class="far fa-edit"></i></button></a> -->
                                 </h4>
                                 <div class="row">
                                     <div class="col"> Father Name:</div>
