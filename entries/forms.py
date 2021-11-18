@@ -53,8 +53,8 @@ class Grade_form(ModelForm):
         model = Grade
         fields = '__all__'
 
-class Financial_history_form(ModelForm):
+class Financial_info_form(ModelForm):
     class Meta:
-        model = Financial_history
+        model = Financial_info
         fields = '__all__'
     
