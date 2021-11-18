@@ -17,14 +17,13 @@ def createEntry(request):
         form1 = Student_info_form(request.POST, request.FILES)
         if form1.is_valid():
             form1.save()
-            #use the input nsu id to fetch student
-            f_nsu_id= form1.cleaned_data['nsu_id']
-            stu_obj = Student_info.objects.get(nsu_id=f_nsu_id)
-            stu_uid = stu_obj.id
-            stu_u_obj = Student_info.objects.get(id=stu_uid)
-            context = {'stu_uid': stu_u_obj}
-            messages.success(request, "Student Entry Created")
-            return render(request, 'entries/student_entry.html', context)
+            f_stu_id = form1.cleaned_data['nsu_id']
+            
+            global cEntGetStuID
+            def cEntGetStuID():
+                return f_stu_id
+
+            return redirect('student_entry')
 
     context = {'form1': form1, }
 
@@ -78,13 +77,43 @@ def StudentList(request):
 
 # Student profile General Info
 def studentEntry(request):
-    viewdetailsID = request.POST.get('viewdetailsID')
-    #print(viewdetailsID)
-    stu_obj = Student_info.objects.get(nsu_id=viewdetailsID)
+    
+    if request.method == 'POST':
+        stu_id = request.POST.get('viewdetailsID')
+    else:
+        stu_id = cEntGetStuID()
+    
+    stu_obj = Student_info.objects.get(nsu_id=stu_id)
     stu_uid = stu_obj.id
+    # fetching uid object of student info
     stu_u_obj = Student_info.objects.get(id=stu_uid)
-    #print(stu_uid)
     context = {'stu_uid': stu_u_obj}
+
+    # checking if there is an entry for the selected id in DB > Personal_info
+    if Personal_info.objects.filter(id=stu_uid).exists():
+        stu_per_info_obj = Personal_info.objects.get(id=stu_uid)  # fetching student's personal information
+        context['stu_personal'] = stu_per_info_obj
+    
+    # checking if there is an entry for the selected id in DB > Ssc_equivlent
+    if Ssc_equivlent.objects.filter(id=stu_uid).exists():
+        stu_ssc_info_obj = Ssc_equivlent.objects.get(id=stu_uid)  # fetching ssc/equivalent academic information
+        context['stu_ssc'] = stu_ssc_info_obj
+
+    # checking if there is an entry for the selected id in DB > Hsc_equivlent
+    if Hsc_equivlent.objects.filter(id=stu_uid).exists():
+        stu_hsc_info_obj = Hsc_equivlent.objects.get(id=stu_uid)  # fetching hsc/equivalent academic information
+        context['stu_hsc'] = stu_ssc_info_obj
+
+    # checking if there is an entry for the selected id in DB > Financial_info
+    if Financial_info.objects.filter(id=stu_uid).exists():
+        stu_fin_info_obj = Financial_info.objects.get(id=stu_uid)  # fetching financial information
+        context['stu_financial'] = stu_fin_info_obj
+
+    # checking if there is any entry against the selected id in DB > Grade
+    #if Grade.objects.filter(id=stu_uid).exists():
+        #code for fetching relevant data
+        #code for passing fetched data to the context
+
     return render(request, 'entries/student_entry.html', context)
 
 

@@ -3,21 +3,20 @@ from django.db import models
 import uuid
 from django.db.models.indexes import Index
 from datetime import datetime, time
-from autoslug import AutoSlugField
 from django.core.validators import *
 
 # Create your models here.
 
 class Student_info(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-    nsu_id = models.CharField(max_length=10, unique=True)
+    nsu_id = models.CharField(max_length=10, unique=True, validators=[MinLengthValidator(10)])
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     dept = models.CharField(max_length=5)
     program = models.CharField(max_length=100)
     batch = models.CharField(max_length=15)
     email = models.EmailField(max_length=100)
-    photo = models.ImageField(upload_to = "photos/%Y/%m/%d/")
+    photo = models.ImageField(default= 'photos/profile-picture-default.png', upload_to = "photos/%Y/%m/%d/")
     
 
     def __str__(self):
