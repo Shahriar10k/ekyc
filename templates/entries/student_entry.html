@@ -4,190 +4,392 @@
 
 <section id="showcase-inner" class="py-5 text-white">
     <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h1 class="display-6">Student Profile</h1>
-          <p class="lead">Manage Student Data </p>
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="display-6">Student Profile</h1>
+                <p class="lead">Manage Student Data </p>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <!--Alerts-->
-  {% include 'partials/_alerts.html' %}
+<!--Alerts-->
+{% include 'partials/_alerts.html' %}
 
-  <section id="dashboard" class="py-4">
+<div id="dashboard" class="py-4">
 
 
-        <div class="row">
+    <div class="row">
 
-    <div class="col-3 pl-5"  >
-        <div class="center">
+        <div class="col-3 pl-5">
+            <div class="center">
             <span class="profile-picture">
                  <img src="{{ stu_uid.photo.url }}" class="img-thumbnail" alt="Cinque Terre" width="100px !important;">
             </span>
-        </div>
-    </div>
-            <div class="col-9">
-                <nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profile</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Academic Info</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Financial Info</a>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-           <div class="col" style="float:left; width:50%;">
-                <h4><span class="middle">General Info</span></h4>
-                <div class="profile-user-info">
-                    <div class="row">
-                        <div class="col"> Full Name: </div>
-                        <div class="col-md-8">
-                            <span>{{stu_uid.first_name}} {{stu_uid.last_name}}</span>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">Student ID:</div>
-
-                        <div class="col-md-8">
-                            <span>{{stu_uid.nsu_id}}</span>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">Enrolled In:</div>
-
-                        <div class="col-md-8">
-                            <span>BS in CSE</span>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">Department: </div>
-
-                        <div class="col-md-8">
-                            <span>ECE</span>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col"> Batch: </div>
-
-                        <div class="col-md-8">
-                            <span>Summer 2018</span>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col"> Current CGPA: </div>
-
-                        <div class="col-md-8">
-                            <span>2.00</span>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col"> Credit Passed: </div>
-
-                        <div class="col-md-8">
-                            <span>104</span>
-                        </div>
-                    </div>
-                </div>
-                </div>
-<div class="col" style="float:right; width:50%;">
-      <div class="card border-light mb-3" style="width: 25rem;">
-
-  <div class="card-body">
-      <div class="float-right">
-      <button class="btn btn-outline-warning" style="right" type="submit"
-              data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-edit"></i></button>
-      </div>
-
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Personal Information</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ........
-          .........
-          ..........
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-outline-success">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-    <h4 class="card-title">Personal Info</h4>
-    <div class="row">
-        <div class="col"> Father Name: </div>
-        <div class="col-md-7">
-            Sheikh Mujib
-        </div>
-    </div>
-
-      <div class="row">
-        <div class="col"> Mother Name: </div>
-        <div class="col-md-7">
-            fozila
-        </div>
-    </div>
-
-      <div class="row">
-        <div class="col"> Contact No: </div>
-        <div class="col-md-7">
-            05364785232
-        </div>
-    </div>
-
-      <div class="row">
-        <div class="col"> Blood Group: </div>
-        <div class="col-md-7">
-            O-
-        </div>
-    </div>
-
-      <div class="row">
-        <div class="col"> Covid-Vac: </div>
-        <div class="col-md-7">
-            Not Taken
-        </div>
-    </div>
-
-      <div class="row">
-        <div class="col"> NID No: </div>
-        <div class="col-md-7">
-            1952 1971 7
-        </div>
-    </div>
-
-
-</div>
-        </div>
-</div></div>
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-
-
-
-
-
-  </div>
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...new pillll</div>
-</div>
             </div>
+        </div>
+        <div class="col-9">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                       aria-controls="nav-home" aria-selected="true">Profile</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                       aria-controls="nav-profile" aria-selected="false">Academic Info</a>
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                       aria-controls="nav-contact" aria-selected="false">Financial Info</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="col" style="float:left; width:50%;"><br>
+                        <h4><span class="middle">General Info</span>
+                        <button class="btn btn-outline-warning" style="right" type="submit"
+              data-toggle="modal" data-target="#exampleModalCenter"><a href="#"><i class="far fa-edit"></i></a></button>
+                        </h4>
+                        <div class="profile-user-info">
+                            <div class="row">
+                                <div class="col"> Full Name:</div>
+                                <div class="col-md-8">
+                                    <span>{{stu_uid.first_name}} {{stu_uid.last_name}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">Student ID:</div>
+
+                                <div class="col-md-8">
+                                    <span>{{stu_uid.nsu_id}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">Enrolled In:</div>
+
+                                <div class="col-md-8">
+                                    <span>BS in CSE</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">Department:</div>
+
+                                <div class="col-md-8">
+                                    <span>ECE</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Batch:</div>
+
+                                <div class="col-md-8">
+                                    <span>Summer 2018</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Current CGPA:</div>
+
+                                <div class="col-md-8">
+                                    <span>2.00</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Credit Passed:</div>
+
+                                <div class="col-md-8">
+                                    <span>104</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" style="float:right; width:50%;">
+                        <div class="card border-light mb-3" style="width: 25rem;">
+
+                            <div class="card-body">
 
 
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Personal
+                                                    Information</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ........
+                                                .........
+                                                ..........
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-warning"
+                                                        data-dismiss="modal">Close
+                                                </button>
+                                                <button type="button" class="btn btn-outline-success">Save changes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4 class="card-title">Personal Info
+                                <button class="btn btn-outline-warning" style="right" type="submit"
+              data-toggle="modal" data-target="#exampleModalCenter"><a href="#"><i class="far fa-edit"></i></a></button>
+                                </h4>
+                                <div class="row">
+                                    <div class="col"> Father Name:</div>
+                                    <div class="col-md-7">
+                                        Sheikh Mujib
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Mother Name:</div>
+                                    <div class="col-md-7">
+                                        fozila
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Contact No:</div>
+                                    <div class="col-md-7">
+                                        05364785232
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Blood Group:</div>
+                                    <div class="col-md-7">
+                                        O-
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Covid-Vac:</div>
+                                    <div class="col-md-7">
+                                        Not Taken
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> NID No:</div>
+                                    <div class="col-md-7">
+                                        1952 1971 7
+                                    </div>
+                                </div>
 
 
-  </section>
-{% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                    <div class="col" style="float:left; width:50%;">
+                        <br><h4><span class="middle">SSC Or Equivalent</span>
+                    <button class="btn btn-outline-warning" style="right" type="submit"
+              data-toggle="modal" data-target="#exampleModalCenter"><a href="#"><i class="far fa-edit"></i></a></button>
+                    </h4>
+                        <div class="profile-user-info">
+                            <div class="row">
+                                <div class="col"> School Name:</div>
+                                <div class="col-md-8">
+                                    <span> {{stu_ssc.school_name}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Session:</div>
+
+                                <div class="col-md-8">
+                                    <span>  {{ stu_ssc.session }}  </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Passing Year:</div>
+
+                                <div class="col-md-8">
+                                    <span> {{ stu_ssc.passing_year }} </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> GPA:</div>
+
+                                <div class="col-md-8">
+                                    <span>{{ stu_ssc.gpa }}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Medium:</div>
+
+                                <div class="col-md-8">
+                                    <span> {{ stu_ssc.medium }} </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Board:</div>
+
+                                <div class="col-md-8">
+                                    <span> {{ stu_ssc.board }} </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col" style="float:right; width:50%;">
+
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Personal
+                                            Information</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ........
+                                        .........
+                                        ..........
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-warning" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="button" class="btn btn-outline-success">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br><h4 class="card-title">HSC or Equivalent
+                    <button class="btn btn-outline-warning" style="right" type="submit"
+              data-toggle="modal" data-target="#exampleModalCenter"><a href="#"><i class="far fa-edit"></i></a></button>
+                    </h4>
+                        <div class="row">
+                            <div class="col"> College Name:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.college_name }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col"> Session:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.session }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col"> Passing Year:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.passing_year }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col"> GPA:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.gpa }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col"> Medium:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.medium }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col"> Board:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.board }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Edit Personal Information</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ........
+                                    .........
+                                    ..........
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close
+                                    </button>
+                                    <button type="button" class="btn btn-outline-success">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <h4 class="card-title">Financial Status
+
+                        <button class="btn btn-outline-warning" style="right" type="submit"
+                                data-toggle="modal" data-target="#exampleModalCenter"><a href="#"><i
+                                class="far fa-edit"></i></a></button>
+                    </h4>
+                    <div class="row">
+                        <div class="col"> Annual Income:</div>
+
+                        <div class="col-md-8">
+                            <span>{{stu_financial.annual_income}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col"> Earning Source:</div>
+
+                        <div class="col-md-8">
+                            <span>{{stu_financial.earning_source}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col"> Annual Expenditure:</div>
+
+                        <div class="col-md-8">
+                            <span>{{stu_financial.annual_expenditure}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </section>
+    {% endblock %}

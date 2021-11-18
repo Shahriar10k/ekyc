@@ -77,7 +77,7 @@ class Ssc_equivlent(models.Model):
 class Hsc_equivlent(models.Model):
     
     id = models.OneToOneField(Student_info, on_delete= models.CASCADE, primary_key=True)
-    collage_name = models.CharField(max_length=100,blank= True, null=True)
+    college_name = models.CharField(max_length=100,blank= True, null=True)
     session = models.IntegerField(blank= True, null=True)
     passing_year = models.IntegerField(blank= True, null=True)
     gpa = models.DecimalField(max_digits=3 , decimal_places=2, blank= True, null=True)

@@ -4,7 +4,7 @@ from django.contrib import messages
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
-from entries.models import Student_info
+from entries.models import *
 from entries.filters import StudentFilter
 
 
@@ -44,12 +44,13 @@ def StudentList(request):
 # Student profile General Info
 def studentEntry(request):
     viewdetailsID = request.POST.get('viewdetailsID')
-    # print(viewdetailsID)
     stu_obj = Student_info.objects.get(nsu_id=viewdetailsID)
     stu_uid = stu_obj.id
-    stu_u_obj = Student_info.objects.get(id=stu_uid)
-    print(stu_uid)
-    context = {'stu_uid': stu_u_obj}
+    stu_u_obj = Student_info.objects.get(id=stu_uid)            #fetching uid object of student info
+    stu_obj_ssc = Ssc_equivlent.objects.get(id=stu_uid)       #fetching uid object of ssc
+    stu_obj_hsc = Hsc_equivlent.objects.get(id=stu_uid)       #fetching uid object of hsc
+    stu_obj_financial = Financial_history.objects.get(id=stu_uid)       # fetching uid object of financial 'stu_financial': stu_u_obj_financial
+    context = {'stu_uid': stu_u_obj, 'stu_ssc': stu_obj_ssc, 'stu_hsc': stu_obj_hsc, 'stu_financial': stu_obj_financial}
     return render(request, 'entries/student_entry.html', context)
 
 
