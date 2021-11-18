@@ -23,6 +23,7 @@ def createEntry(request):
             def cEntGetStuID():
                 return f_stu_id
 
+            messages.success(request, f'Student Entry Created.')
             return redirect('student_entry')
 
     context = {'form1': form1, }
@@ -61,9 +62,34 @@ def updateEntry(request):
             messages.success(request, "Student Entry Updated")
             return render(request, 'entries/student_entry.html', context)
 
-    
-    
     return render(request, 'entries/update_entries.html', context)
+
+# view for updating personal information
+def updatePersonalInfo(request):
+    stu_uid1 = request.POST.get('viewdetailsID')            
+        # the above line is for checking purpose; original: stu_uid1 = request.POST.get('viewdetailsID')
+    stu_uid = '01954f7f-13ca-4fca-8475-77c4e745689a'        
+        # the above line is for checking purpose; otherwise, delete it
+    print(stu_uid1)
+        # the above line is for checking purpose; otherwise, delete it
+
+    if not Personal_info.objects.filter(id_id=stu_uid).exists():
+        student = Personal_info(id_id=stu_uid)
+        student.save()
+
+    student = Personal_info.objects.get(id_id=stu_uid)
+    form = Personal_info_form(instance=student)
+    context = {'form' : form}
+
+    if request.method == 'POST':
+        form = Personal_info_form(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Personal Information Updated.')
+            return render(request, 'entries/update_personal_info.html', context)
+    else:
+        form = Personal_info_form()
+    return render(request, 'entries/update_personal_info.html', context)
 
 
 # filter for student list
@@ -131,7 +157,7 @@ def createCourse(request):
         if form1.is_valid():
             form1.save()
 
-            messages.success(request, "Saved")
+            messages.success(request, "Course Information Added.")
             return redirect('dashboard')
 
     context = {'form1': form1, }
