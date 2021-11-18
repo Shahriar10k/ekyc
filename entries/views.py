@@ -68,7 +68,7 @@ def updateEntry(request):
 def updatePersonalInfo(request):
     stu_uid1 = request.POST.get('viewdetailsID')            
         # the above line is for checking purpose; original: stu_uid1 = request.POST.get('viewdetailsID')
-    stu_uid = '01954f7f-13ca-4fca-8475-77c4e745689a'        
+    stu_uid = '0dfc94b1-42b6-487b-87d9-172de23f4a94'        
         # the above line is for checking purpose; otherwise, delete it
     print(stu_uid1)
         # the above line is for checking purpose; otherwise, delete it

@@ -1,38 +1,39 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
 
-{% block content %} 
+{% block content %}
 
 
 <section id="register" class="bg-light py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mx-auto">
-          <div class="card">
-            <div class="card-header bg-primary text-white">
-              <h4>
-                <i class="far fa-edit"></i> Update The Student Entry</h4>
-            </div>
-            <div class="card-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h4>
+              <i class="far fa-edit"></i> Update The Student Entry
+            </h4>
+          </div>
+          <div class="card-body">
 
-                
-                {% include 'partials/_alerts.html' %} 
-                <form action= "{% url 'update_entry' %}" method="POST" enctype="multipart/form-data">
-                  {% csrf_token %} 
-                <div class="form-group">
-                  <!-- {% crispy form1 %}                  -->
-                  {{form1|crispy}}
-                </div>
-                
-                <input type="submit" value="Submit" name="Submit" class="btn btn-outline-secondary">
-              </form>
-            </div>
+
+            {% include 'partials/_alerts.html' %}
+            <form action="{% url 'update_entry' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-group">
+                <!-- {% crispy form1 %}                  -->
+                {{form1|crispy}}
+              </div>
+
+              <input type="submit" value="Submit" name="Submit" class="btn btn-outline-secondary">
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
-{% endblock %} 
+{% endblock %}

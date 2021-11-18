@@ -110,6 +110,7 @@
                                 <h4 class="card-title">
                                     Personal Info
                                     <form action="update_personal_info/" method="POST">
+                                        {% csrf_token %}
                                         <button class="btn btn-outline-warning" name="viewdetailsID" value="{{stu_uid.id}}" type="submit"><i class="far fa-edit">PI</i></button>
                                     </form>
                                     <!-- <a href="{% url 'update_personal_info' %}"><button class="btn btn-outline-warning"><i class="far fa-edit"></i></button></a> -->
