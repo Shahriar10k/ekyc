@@ -110,11 +110,12 @@ def studentEntry(request):
         context['stu_financial'] = stu_fin_info_obj
 
     # checking if there is any entry against the selected id in DB > Grade
-    #if Grade.objects.filter(id=stu_uid).exists():
-        #code for fetching relevant data
-        #code for passing fetched data to the context
+    if Grade.objects.filter(id=stu_uid).exists():
+        stu_grade_info_obj = Grade.objects.get(id=stu_uid)  # fetching financial information
+        context['stu_grade'] = stu_grade_info_obj
 
     return render(request, 'entries/student_entry.html', context)
+
 
 
 # @login_required

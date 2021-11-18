@@ -36,7 +36,7 @@
                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
                        aria-controls="nav-profile" aria-selected="false">Academic Info</a>
                     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
-                       aria-controls="nav-contact" aria-selected="false">Financial Info</a>
+                       aria-controls="nav-contact" aria-selected="false">Grade History</a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
@@ -331,61 +331,39 @@
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
 
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">Edit Personal Information</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    ........
-                                    .........
-                                    ..........
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close
-                                    </button>
-                                    <button type="button" class="btn btn-outline-success">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <br>
-                    <h4 class="card-title">Financial Status
+                    <div class="container">
+                        <div class="container">
+</div>
+      <div class="row">
+        <table class="table table-dark>
+          <thead>
+          <tr>
+            <th scope="col">Semester</th>
+            <th scope="col">Course Code</th>
+            <th scope="col">Course Credit</th>
+            <th scope="col">Course Title</th>
+            <th scope="col">Grade</th>
+          </tr>
+          </thead>
 
-                        <button class="btn btn-outline-warning" style="right" type="submit"
-                                data-toggle="modal" data-target="#exampleModalCenter"><a href="#"><i
-                                class="far fa-edit"></i></a></button>
-                    </h4>
-                    <div class="row">
-                        <div class="col"> Annual Income:</div>
+          <tr>
+            <td>{{stu_grade.semester}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
 
-                        <div class="col-md-8">
-                            <span>{{stu_financial.annual_income}}</span>
-                        </div>
-                    </div>
+        </table>
+      </div>
+    </div>
 
-                    <div class="row">
-                        <div class="col"> Earning Source:</div>
-
-                        <div class="col-md-8">
-                            <span>{{stu_financial.earning_source}}</span>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col"> Annual Expenditure:</div>
-
-                        <div class="col-md-8">
-                            <span>{{stu_financial.annual_expenditure}}</span>
-                        </div>
-                    </div>
                 </div>
+
+
+
+
             </div>
         </div>
     </div>
