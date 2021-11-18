@@ -107,12 +107,39 @@
                         <div class="card border-light mb-3" style="width: 25rem;">
 
                             <div class="card-body">
-                                <h4 class="card-title">
-                                    Personal Info
-                                    <form action="update_personal_info/" method="POST">
-                                        <button class="btn btn-outline-warning" name="viewdetailsID" value="{{stu_uid.id}}" type="submit"><i class="far fa-edit">PI</i></button>
-                                    </form>
-                                    <!-- <a href="{% url 'update_personal_info' %}"><button class="btn btn-outline-warning"><i class="far fa-edit"></i></button></a> -->
+
+
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Personal
+                                                    Information</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ........
+                                                .........
+                                                ..........
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-warning"
+                                                        data-dismiss="modal">Close
+                                                </button>
+                                                <button type="button" class="btn btn-outline-success">Save changes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4 class="card-title">Personal Info
+                                <button class="btn btn-outline-warning" style="right" type="submit"
+              data-toggle="modal" data-target="#exampleModalCenter"><a href="#"><i class="far fa-edit"></i></a></button>
                                 </h4>
                                 <div class="row">
                                     <div class="col"> Father Name:</div>

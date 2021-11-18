@@ -14,16 +14,16 @@ class Student_info_form(ModelForm):
 
 class Personal_info_form(ModelForm):
     GENDER = (
-        ('Male','Male'),
-        ('Female','Female'),
-        ('Other','Other'),
+        ('MALE','MALE'),
+        ('FEMALE','FEMALE'),
+        ('OTHER','OTHER'),
     )
-    VAX_STATUS = (
-        ('Vaccinated', 'Vaccinated'),
-        ('Unvaccinated', 'Unvaccinated'),
+    VOTE_TYPE = (
+        ('Taken', 'Taken'),
+        ('Not taken', 'Not taken'),
     )
-    gender = forms.ChoiceField(choices=GENDER, widget=forms.RadioSelect, initial = 'Male')
-    covid19_vax_status = forms.ChoiceField(choices=VAX_STATUS, widget=forms.RadioSelect)
+    gender = forms.ChoiceField(choices=GENDER, widget=forms.RadioSelect, initial = 'MALE')
+    Covid19_status = forms.ChoiceField(choices=VOTE_TYPE, widget=forms.RadioSelect)
     class Meta:
         model = Personal_info
         fields = '__all__'
