@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'cutomer.apps.CustomerConfig',
     'django_filters',
     'crispy_forms',
     'accounts.apps.AccountsConfig',
