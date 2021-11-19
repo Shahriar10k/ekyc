@@ -27,7 +27,6 @@ class Personal_info_form(ModelForm):
     class Meta:
         model = Personal_info
         fields = [
-            'id',
             'father_name',
             'mother_name',
             'gender',
@@ -44,7 +43,6 @@ class Personal_info_form(ModelForm):
     def __init__(self, *args, **kwargs):
         super(Personal_info_form, self).__init__(*args, **kwargs)
                 
-        self.fields['id'].label = "Student's ID"
         self.fields['father_name'].label = "Father's name"
         self.fields['mother_name'].label = "Mother's name"
         self.fields['date_of_birth'].label = "Date of birth (YYYY-MM-DD):"

@@ -10,6 +10,8 @@ from entries.filters import StudentFilter
 
 # Create your views here.
 
+mydata = {} # dictionary to store session data
+
 def createEntry(request):
     form1 = Student_info_form()
 
@@ -17,11 +19,14 @@ def createEntry(request):
         form1 = Student_info_form(request.POST, request.FILES)
         if form1.is_valid():
             form1.save()
-            f_stu_id = form1.cleaned_data['nsu_id']
+            f_nsu_id = form1.cleaned_data['nsu_id']
             
-            global cEntGetStuID
-            def cEntGetStuID():
-                return f_stu_id
+            # fetch UUID of the student from database using nsu-id from form
+            stu_obj = Student_info.objects.get(nsu_id=f_nsu_id)
+            stu_uid = stu_obj.id
+            
+            # store student's uuid for later use in the session
+            mydata['stu_uid'] = stu_uid
 
             messages.success(request, f'Student Entry Created.')
             return redirect('student_entry')
@@ -69,21 +74,20 @@ def updatePersonalInfo(request):
     if 'viewdetailsID' in request.POST:
         stu_uid = request.POST.get('viewdetailsID')
     
-        print(stu_uid)
+        # store student's uuid for later use in the session
+        mydata['stu_uid'] = stu_uid
 
+        # create an entry against the 'stu_uid' in Personal_info model if it doesn't exist
         if not Personal_info.objects.filter(id_id=stu_uid).exists():
             student = Personal_info(id_id=stu_uid)
             student.save()
             print('does not exist')
 
-        student = Personal_info.objects.get(id_id=stu_uid)
-        #print(student.id_id)
-        form = Personal_info_form(instance=student)
+    # access student's uuid which was stored above
+    stu_uid = mydata['stu_uid']
 
-    else:
-        stu_id = request.POST.get('id')
-        student = Personal_info.objects.get(id_id=stu_id)
-        form = Personal_info_form(instance=student)
+    student = Personal_info.objects.get(id_id=stu_uid)
+    form = Personal_info_form(instance=student)
     
     context = {'form' : form}
 
@@ -93,8 +97,7 @@ def updatePersonalInfo(request):
             form.save()
 
             messages.success(request, f'Personal Information Updated.')
-            #return redirect('student_entry')
-            return render(request, 'entries/update_personal_info.html', context)
+            return redirect('student_entry')
     else:
         form = Personal_info_form()
     return render(request, 'entries/update_personal_info.html', context)
@@ -112,14 +115,19 @@ def StudentList(request):
 # Student profile General Info
 def studentEntry(request):
     
+    # if accessed from Student List page
     if request.method == 'POST':
         stu_id = request.POST.get('viewdetailsID')
+        
+        # fetch UUID from database using nsu-id from form
+        stu_obj = Student_info.objects.get(nsu_id=stu_id)
+        stu_uid = stu_obj.id
+
+    # if accessed from an update function
     else:
-        stu_id = cEntGetStuID()
+        stu_uid = mydata['stu_uid']
     
-    stu_obj = Student_info.objects.get(nsu_id=stu_id)
-    stu_uid = stu_obj.id
-    # fetching uid object of student info
+    # fetching Student_info object of the student using UUID
     stu_u_obj = Student_info.objects.get(id=stu_uid)
     context = {'stu_uid': stu_u_obj}
 
