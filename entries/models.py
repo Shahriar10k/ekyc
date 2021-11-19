@@ -113,7 +113,8 @@ class Grade(models.Model):
         ('I','I'),
         ('W','W'),
     )
-    id = models.ForeignKey(Student_info, on_delete= models.CASCADE, primary_key=True, unique=False)
+    ga_id=models.AutoField(primary_key=True,)
+    id = models.ForeignKey(Student_info, on_delete= models.CASCADE, unique=False)
     course_code = models.OneToOneField(Course, on_delete= models.CASCADE, blank= True, null=True)
     semester = models.CharField(max_length=20,choices=SEMESTER_NAME, blank= True, null=True)
     year = models.IntegerField(blank= True, null=True)
