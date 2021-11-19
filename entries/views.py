@@ -126,7 +126,7 @@ def studentEntry(request):
     # if accessed from an update function
     else:
         stu_uid = mydata['stu_uid']
-    
+
     # fetching uid object of student info
     stu_u_obj = Student_info.objects.get(id=stu_uid)
     context = {'stu_uid': stu_u_obj}
@@ -153,8 +153,10 @@ def studentEntry(request):
 
     # checking if there is any entry against the selected id in DB > Grade
     if Grade.objects.filter(id=stu_uid).exists():
-        stu_grade_info_obj = Grade.objects.get(id=stu_uid)  # fetching financial information
-        context['stu_grade'] = stu_grade_info_obj
+        stu_grade_info_obj = Grade.objects.get(id=stu_uid)
+        course=stu_grade_info_obj.course_code       #fetch course information
+        context['stu_grade'] = stu_grade_info_obj       #pass grade obj
+        context['course'] = course                  #pass course obj
 
     return render(request, 'entries/student_entry.html', context)
 

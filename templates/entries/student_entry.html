@@ -319,9 +319,11 @@
 
           <tr>
             <td>{{stu_grade.semester}}-{{stu_grade.year}}</td>
-            <td>{{stu_grade.course_code}}</td>
-            <td></td>
-            <td></td>
+            <td>
+            {{ course.couse_code }}
+            </td>
+            <td>{{ course.course_credit }}</td>
+            <td>{{ course.course_title }}</td>
             <td>{{stu_grade.grade}}</td>
           </tr>
 
