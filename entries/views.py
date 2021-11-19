@@ -127,8 +127,6 @@ def studentEntry(request):
     else:
         stu_uid = mydata['stu_uid']
     
-    stu_obj = Student_info.objects.get(nsu_id=stu_id)
-    stu_uid = stu_obj.id
     # fetching uid object of student info
     stu_u_obj = Student_info.objects.get(id=stu_uid)
     context = {'stu_uid': stu_u_obj}
