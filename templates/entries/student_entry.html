@@ -115,45 +115,86 @@
                                 <div class="row">
                                     <div class="col"> Father Name:</div>
                                     <div class="col-md-7">
-                                        Sheikh Mujib
+                                        {{stu_personal.father_name|default_if_none:"N/A"}}
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col"> Mother Name:</div>
                                     <div class="col-md-7">
-                                        fozila
+                                        {{stu_personal.mother_name|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <div class="row">
+                                    <div class="col"> Date of birth:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.date_of_birth|default_if_none:"N/A"}}
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col"> Contact No:</div>
+                                    <div class="col"> Gender:</div>
                                     <div class="col-md-7">
-                                        05364785232
+                                        {{stu_personal.gender|default_if_none:"N/A"}}
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col"> Citizenship:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.citizenship|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Religion:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.religion|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Marital Status:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.marital_status|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <hr>
 
                                 <div class="row">
                                     <div class="col"> Blood Group:</div>
                                     <div class="col-md-7">
-                                        O-
+                                        {{stu_personal.blood_group|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+                                
+                                <!-- stop here -->
+                                
+                                <div class="row">
+                                    <div class="col"> Vax Status:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.covid19_vax_status|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col"> Address:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.address|default_if_none:"N/A"}}
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col"> Covid-Vac:</div>
+                                    <div class="col"> Contact No.:</div>
                                     <div class="col-md-7">
-                                        Not Taken
+                                        {{stu_personal.contact_number|default_if_none:"N/A"}}
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col"> NID No:</div>
-                                    <div class="col-md-7">
-                                        1952 1971 7
-                                    </div>
-                                </div>
-
 
                             </div>
                         </div>
@@ -170,7 +211,7 @@
                             <div class="row">
                                 <div class="col"> School Name:</div>
                                 <div class="col-md-8">
-                                    <span> {{stu_ssc.school_name}}</span>
+                                    <span> {{stu_ssc.school_name|default_if_none:"N/A"}}</span>
                                 </div>
                             </div>
 
@@ -178,7 +219,7 @@
                                 <div class="col"> Session:</div>
 
                                 <div class="col-md-8">
-                                    <span>  {{ stu_ssc.session }}  </span>
+                                    <span>  {{ stu_ssc.session|default_if_none:"N/A" }}  </span>
                                 </div>
                             </div>
 
@@ -186,7 +227,7 @@
                                 <div class="col"> Passing Year:</div>
 
                                 <div class="col-md-8">
-                                    <span> {{ stu_ssc.passing_year }} </span>
+                                    <span> {{ stu_ssc.passing_year|default_if_none:"N/A" }} </span>
                                 </div>
                             </div>
 
@@ -194,7 +235,7 @@
                                 <div class="col"> GPA:</div>
 
                                 <div class="col-md-8">
-                                    <span>{{ stu_ssc.gpa }}</span>
+                                    <span>{{ stu_ssc.gpa|default_if_none:"N/A" }}</span>
                                 </div>
                             </div>
 
@@ -202,7 +243,7 @@
                                 <div class="col"> Medium:</div>
 
                                 <div class="col-md-8">
-                                    <span> {{ stu_ssc.medium }} </span>
+                                    <span> {{ stu_ssc.medium|default_if_none:"N/A" }} </span>
                                 </div>
                             </div>
 
@@ -210,7 +251,7 @@
                                 <div class="col"> Board:</div>
 
                                 <div class="col-md-8">
-                                    <span> {{ stu_ssc.board }} </span>
+                                    <span> {{ stu_ssc.board|default_if_none:"N/A" }} </span>
                                 </div>
                             </div>
 
@@ -252,7 +293,7 @@
                             <div class="col"> College Name:</div>
 
                             <div class="col-md-8">
-                                <span>{{ stu_hsc.college_name }}</span>
+                                <span>{{ stu_hsc.college_name|default_if_none:"N/A" }}</span>
                             </div>
                         </div>
 
@@ -260,7 +301,7 @@
                             <div class="col"> Session:</div>
 
                             <div class="col-md-8">
-                                <span>{{ stu_hsc.session }}</span>
+                                <span>{{ stu_hsc.session|default_if_none:"N/A" }}</span>
                             </div>
                         </div>
 
@@ -268,7 +309,7 @@
                             <div class="col"> Passing Year:</div>
 
                             <div class="col-md-8">
-                                <span>{{ stu_hsc.passing_year }}</span>
+                                <span>{{ stu_hsc.passing_year|default_if_none:"N/A" }}</span>
                             </div>
                         </div>
 
@@ -276,7 +317,7 @@
                             <div class="col"> GPA:</div>
 
                             <div class="col-md-8">
-                                <span>{{ stu_hsc.gpa }}</span>
+                                <span>{{ stu_hsc.gpa|default_if_none:"N/A" }}</span>
                             </div>
                         </div>
 
@@ -284,7 +325,7 @@
                             <div class="col"> Medium:</div>
 
                             <div class="col-md-8">
-                                <span>{{ stu_hsc.medium }}</span>
+                                <span>{{ stu_hsc.medium|default_if_none:"N/A" }}</span>
                             </div>
                         </div>
 
@@ -292,7 +333,7 @@
                             <div class="col"> Board:</div>
 
                             <div class="col-md-8">
-                                <span>{{ stu_hsc.board }}</span>
+                                <span>{{ stu_hsc.board|default_if_none:"N/A" }}</span>
                             </div>
                         </div>
                     </div>
