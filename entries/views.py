@@ -105,7 +105,7 @@ def updatePersonalInfo(request):
 
 # filter for student list
 def StudentList(request):
-    student_list = Student_info.objects.all()
+    student_list = Student_info.objects.all().order_by('nsu_id')
     stuFilter = StudentFilter(request.GET, queryset=student_list)
     student_list = stuFilter.qs
 
@@ -153,10 +153,9 @@ def studentEntry(request):
 
     # checking if there is any entry against the selected id in DB > Grade
     if Grade.objects.filter(id=stu_uid).exists():
-        stu_grade_info_obj = Grade.objects.get(id=stu_uid)
-        course=stu_grade_info_obj.course_code       #fetch course information
+        stu_grade_info_obj = Grade.objects.filter(id=stu_uid).order_by('year')
+        #print(stu_grade_info_obj)
         context['stu_grade'] = stu_grade_info_obj       #pass grade obj
-        context['course'] = course                  #pass course obj
 
     return render(request, 'entries/student_entry.html', context)
 

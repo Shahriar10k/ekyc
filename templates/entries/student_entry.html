@@ -358,15 +358,19 @@
           </tr>
           </thead>
 
+          <tbody>
+              
+          {% for grade in stu_grade %}
           <tr>
-            <td>{{stu_grade.semester}}-{{stu_grade.year}}</td>
-            <td>
-            {{ course.couse_code }}
-            </td>
-            <td>{{ course.course_credit }}</td>
-            <td>{{ course.course_title }}</td>
-            <td>{{stu_grade.grade}}</td>
+            <td>{{grade.semester}} {{grade.year}}</td>
+            <td>{{ grade.course_code.couse_code }}</td>
+            <td>{{ grade.course_code.course_credit }}</td>
+            <td>{{ grade.course_code.course_title }}</td>
+            <td>{{grade.grade}}</td>
           </tr>
+          {% endfor %}
+
+          </tbody>
 
         </table>
       </div>
