@@ -144,7 +144,7 @@ def studentEntry(request):
     # checking if there is an entry for the selected id in DB > Hsc_equivlent
     if Hsc_equivlent.objects.filter(id=stu_uid).exists():
         stu_hsc_info_obj = Hsc_equivlent.objects.get(id=stu_uid)  # fetching hsc/equivalent academic information
-        context['stu_hsc'] = stu_ssc_info_obj
+        context['stu_hsc'] = stu_hsc_info_obj
 
     # checking if there is an entry for the selected id in DB > Financial_info
     if Financial_info.objects.filter(id=stu_uid).exists():
