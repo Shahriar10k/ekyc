@@ -193,3 +193,16 @@ def createCourse(request):
     context = {'form1': form1, }
 
     return render(request, 'entries/add_course.html', context)
+
+def assignGrade(request):
+    form1 = Grade_form()
+
+    if request.method == 'POST':
+        form1 = Grade_form(request.POST)
+        if form1.is_valid():
+            form1.save()
+
+            messages.success(request, "Grade Information Added.")
+            return redirect('dashboard')
+    context = {'form1': form1,}
+    return render(request, 'entries/assign_grade.html', context)
