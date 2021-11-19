@@ -69,6 +69,18 @@ def updateEntry(request):
 
     return render(request, 'entries/update_entries.html', context)
 
+
+def deleteEntry(request):
+    if 'id' in request.POST:
+        stu_id = request.POST.get('id')
+        #print(stu_id)
+
+    student = Student_info.objects.get(nsu_id=stu_id)
+    student.delete()
+
+    messages.success(request, f'Entry Successfully Deleted.')
+    return redirect('StudentList')
+
 # view for updating personal information
 def updatePersonalInfo(request):
     if 'viewdetailsID' in request.POST:
