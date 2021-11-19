@@ -93,8 +93,8 @@ class Course(models.Model):
 
 class Grade(models.Model):
     SEMESTER_NAME = (
-        ('SUMMER','SUMMER'),
         ('FALL','FALL'),
+        ('SUMMER','SUMMER'),
         ('SPRING','SPRING'),
     )
 
@@ -115,7 +115,7 @@ class Grade(models.Model):
     )
     ga_id=models.AutoField(primary_key=True,)
     id = models.ForeignKey(Student_info, on_delete= models.CASCADE, unique=False)
-    course_code = models.OneToOneField(Course, on_delete= models.CASCADE, blank= True, null=True)
+    course_code = models.ForeignKey(Course, on_delete= models.CASCADE, unique=False)
     semester = models.CharField(max_length=20,choices=SEMESTER_NAME, blank= True, null=True)
     year = models.IntegerField(blank= True, null=True)
     grade = models.CharField(max_length=10,choices=GRADE_CHOICE, blank= True, null=True)
