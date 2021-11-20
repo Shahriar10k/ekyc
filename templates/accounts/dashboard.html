@@ -1,0 +1,64 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">Admin Dashboard</h1>
+          <p class="lead">Manage Student Data </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Alerts-->
+  {% include 'partials/_alerts.html' %} 
+
+  <section id="dashboard" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Welcome {{ user.first_name}} </h2>
+          <br>
+          <br>
+          <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Admin Tools</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Create An Entry </td>
+                <td>
+                  <a class="btn btn-outline-success" href="{% url 'create_entry' %}"><i class="fas fa-plus"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Create A Course </td>
+                <td>
+                  <a class="btn btn-outline-success" href="{% url 'create_course' %}"><i class="fas fa-plus"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Assign Grade </td>
+                <td>
+                  <a class="btn btn-outline-success" href="{% url 'assign_grade' %}"><i class="fas fa-plus"></i></a>
+                </td>
+              </tr>            
+              <tr>
+                <td>View Complete Student List </td>
+                <td>
+                  <a class="btn btn-outline-success" href="{% url 'StudentList' %}"><i class="far fa-eye"></i></a>
+                </td>
+              </tr>             
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %} 

@@ -1,0 +1,413 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="display-6">Student Profile</h1>
+                <p class="lead">Manage Student Data </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Alerts-->
+{% include 'partials/_alerts.html' %}
+
+<div id="dashboard" class="py-4">
+
+
+    <div class="row">
+
+        <div class="col-3 pl-5">
+            <div class="center">
+            <span class="profile-picture">
+                 <img src="{{ stu_uid.photo.url }}" class="img-thumbnail" alt="Cinque Terre" width="100px !important;">
+            </span>
+            </div>
+        </div>
+        <div class="col-9">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                       aria-controls="nav-home" aria-selected="true">Profile</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                       aria-controls="nav-profile" aria-selected="false">Academic Info</a>
+                    <a class="nav-item nav-link" id="nav-fin-info-tab" data-toggle="tab" href="#nav-fin-info" role="tab"
+                        aria-controls="nav-fin-info" aria-selected="false">Financial Info</a>
+                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                       aria-controls="nav-contact" aria-selected="false">Grade History</a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="col" style="float:left; width:50%;"><br>
+                        <h4><span class="middle">General Info</span>
+                        </h4>
+                        <div class="profile-user-info">
+                            <div class="row">
+                                <div class="col"> Full Name:</div>
+                                <div class="col-md-8">
+                                    <span>{{stu_uid.first_name}} {{stu_uid.last_name}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">Student ID:</div>
+
+                                <div class="col-md-8">
+                                    <span>{{stu_uid.nsu_id}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">Enrolled In:</div>
+
+                                <div class="col-md-8">
+                                    <span>{{stu_uid.program}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">Department:</div>
+
+                                <div class="col-md-8">
+                                    <span>{{stu_uid.dept}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Batch:</div>
+
+                                <div class="col-md-8">
+                                    <span>{{stu_uid.batch}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Current CGPA:</div>
+
+                                <div class="col-md-8">
+                                    <span>{{stu_cgpa}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Credit Passed:</div>
+
+                                <div class="col-md-8">
+                                    <span>{{stu_credit}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" style="float:right; width:50%;">
+                        <div class="card border-light mb-3" style="width: 25rem;">
+
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    Personal Info
+                                    <form action="update_personal_info/" method="POST" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button class="btn btn-outline-warning" name="viewdetailsID" value="{{stu_uid.id}}" type="submit"><i class="far fa-edit"></i></button>
+                                    </form>
+                                </h4>
+                                <div class="row">
+                                    <div class="col"> Father Name:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.father_name|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Mother Name:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.mother_name|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <div class="row">
+                                    <div class="col"> Date of birth:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.date_of_birth|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Gender:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.gender|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"> Citizenship:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.citizenship|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Religion:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.religion|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Marital Status:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.marital_status|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col"> Blood Group:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.blood_group|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+                                
+                                <!-- stop here -->
+                                
+                                <div class="row">
+                                    <div class="col"> Vax Status:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.covid19_vax_status|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col"> Address:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.address|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"> Contact No.:</div>
+                                    <div class="col-md-7">
+                                        {{stu_personal.contact_number|default_if_none:"N/A"}}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                    <div class="col" style="float:left; width:50%;">
+                        <br>
+                        <h4><span class="middle">SSC/Equivalent</span>
+                            <form action="update_aca_ssc_equiv_info/" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-warning" name="viewdetailsID" value="{{stu_uid.id}}" type="submit"><i class="far fa-edit"></i></button>
+                            </form>
+                        </h4>
+                        <div class="profile-user-info">
+                            <div class="row">
+                                <div class="col"> School Name:</div>
+                                <div class="col-md-8">
+                                    <span> {{stu_ssc.school_name|default_if_none:"N/A"}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Session:</div>
+
+                                <div class="col-md-8">
+                                    <span>  {{ stu_ssc.session|default_if_none:"N/A" }}  </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Passing Year:</div>
+
+                                <div class="col-md-8">
+                                    <span> {{ stu_ssc.passing_year|default_if_none:"N/A" }} </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> GPA:</div>
+
+                                <div class="col-md-8">
+                                    <span>{{ stu_ssc.gpa|default_if_none:"N/A" }}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Medium:</div>
+
+                                <div class="col-md-8">
+                                    <span> {{ stu_ssc.medium|default_if_none:"N/A" }} </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Board:</div>
+
+                                <div class="col-md-8">
+                                    <span> {{ stu_ssc.board|default_if_none:"N/A" }} </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col" style="float:right; width:50%;">
+
+                        
+
+                        <br>
+                        <h4 class="card-title">HSC/Equivalent
+                            <form action="update_aca_hsc_equiv_info/" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-warning" name="viewdetailsID" value="{{stu_uid.id}}" type="submit"><i class="far fa-edit"></i></button>
+                            </form>
+                        </h4>
+                        <div class="row">
+                            <div class="col"> College Name:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.college_name|default_if_none:"N/A" }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col"> Session:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.session|default_if_none:"N/A" }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col"> Passing Year:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.passing_year|default_if_none:"N/A" }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col"> GPA:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.gpa|default_if_none:"N/A" }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col"> Medium:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.medium|default_if_none:"N/A" }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col"> Board:</div>
+
+                            <div class="col-md-8">
+                                <span>{{ stu_hsc.board|default_if_none:"N/A" }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="tab-pane fade" id="nav-fin-info" role="tabpanel" aria-labelledby="nav-fin-info-tab">
+
+                    <div class="col" style="float:left; width:50%;">
+                        <br>
+                        <h4><span class="middle">Financial Info</span>
+                            <form action="update_financial_info/" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-warning" name="viewdetailsID" value="{{stu_uid.id}}" type="submit"><i class="far fa-edit"></i></button>
+                            </form>
+                        </h4>
+                        <div class="profile-user-info">
+                            <div class="row">
+                                <div class="col"> Annual Income:</div>
+                                <div class="col-md-7">
+                                    <span> {{stu_fin.annual_income|default_if_none:"N/A"}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Earning Source:</div>
+
+                                <div class="col-md-7">
+                                    <span>  {{ stu_fin.earning_source|default_if_none:"N/A" }}  </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Annual Expenditure:</div>
+
+                                <div class="col-md-7">
+                                    <span> {{ stu_fin.annual_expenditure|default_if_none:"N/A" }} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+
+
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+
+                    <br>
+                    <div class="container">
+      <div class="row">
+        <table class="table table-dark>
+          <thead>
+          <tr>
+          <th scope="col"></th>
+            <th scope="col">Semester</th>
+            <th scope="col">Course Code</th>
+            <th scope="col">Course Credit</th>
+            <th scope="col">Course Title</th>
+            <th scope="col">Grade</th>
+          </tr>
+          </thead>
+
+          <tbody>
+              
+          {% for grade in stu_grade %}
+          <tr>
+            <td>{{grade.semester}} {{grade.year}}</td>
+            <td>{{ grade.course_code.couse_code }}</td>
+            <td>{{ grade.course_code.course_credit }}</td>
+            <td>{{ grade.course_code.course_title }}</td>
+            <td>{{grade.grade}}</td>
+          </tr>
+          {% endfor %}
+
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    </section>
+    {% endblock %}
