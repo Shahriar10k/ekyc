@@ -77,3 +77,7 @@ def updateCustomer(request):
             return redirect('CustomerList')
 
     return render(request, 'customer/update_customer.html', context)
+
+def customerFeatur(request):
+    context = {}
+    return render(request, 'customer/customer_feature_access.html', context)
