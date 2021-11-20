@@ -23,7 +23,6 @@
           <h2>Welcome {{ user.first_name}} </h2>
           <br>
           <br>
-    
           <table class="table">
             <thead>
                 <tr>
@@ -32,23 +31,29 @@
             </thead>
             <tbody>
               <tr>
-                <td>Add An Entry </td>
+                <td>Create An Entry </td>
                 <td>
-                  <a class="btn btn-light" href="#">Add</a>
+                  <a class="btn btn-outline-success" href="{% url 'create_entry' %}"><i class="fas fa-plus"></i></a>
                 </td>
               </tr>
               <tr>
-                <td>Edit An Entry </td>
+                <td>Create A Course </td>
                 <td>
-                  <a class="btn btn-light" href="#">Edit</a>
+                  <a class="btn btn-outline-success" href="{% url 'create_course' %}"><i class="fas fa-plus"></i></a>
                 </td>
               </tr>
               <tr>
-                <td>Delete An Entry</td>
+                <td>Assign Grade </td>
                 <td>
-                  <a class="btn btn-light" href="#">Delete</a>
+                  <a class="btn btn-outline-success" href="{% url 'assign_grade' %}"><i class="fas fa-plus"></i></a>
                 </td>
-              </tr>
+              </tr>            
+              <tr>
+                <td>View Complete Student List </td>
+                <td>
+                  <a class="btn btn-outline-success" href="{% url 'StudentList' %}"><i class="far fa-eye"></i></a>
+                </td>
+              </tr>             
             </tbody>
           </table>
         </div>

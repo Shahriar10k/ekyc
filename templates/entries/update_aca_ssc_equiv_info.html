@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section id="register" class="bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4>
+                            <i class="far fa-edit"></i> Update SSC/Equivalent Academic Info
+                        </h4>
+                    </div>
+                    <div class="card-body">
+
+
+                        {% include 'partials/_alerts.html' %}
+                        <form action="{% url 'update_aca_ssc_equiv_info' %}" method="POST" enctype="multipart/form-data">
+
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                {{form|crispy}}
+                            </div>
+
+                            <input type="submit" value="Submit" name="Submit" class="btn btn-outline-secondary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

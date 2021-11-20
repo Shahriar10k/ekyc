@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-6">Student List</h1>
+          <p class="lead">Search And Manage Student Data </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Alerts-->
+  {% include 'partials/_alerts.html' %}
+
+  <section id="dashboard" class="py-4">
+
+    <div class="container">
+      <div class="row">
+        <table class="table table-dark">
+          <form method="get">
+            {{stuFilter.form}}
+
+          </form>
+        </table>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">NSU ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Details</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+          </thead>
+
+          {% if student_list == none %}
+          <tr>
+            <td colspan="6">No entries to display.</td>
+          </tr>
+          {% endif %}
+          
+          {% for student in student_list %}
+          <form action="student_entry/" method="post" id="idpass">
+            {% csrf_token %}
+          <tr>
+            <td>{{student.nsu_id}}</td>
+            <td>{{student.first_name}} {{student.last_name}}</td>
+            <td>{{student.email}}</td>
+            <td><button class="btn btn-outline-info" name="viewdetailsID" value="{{student.nsu_id}}" type="submit"><i class="far fa-eye"></i></button></td>
+            <td><button class="btn btn-outline-warning" name="viewdetailsID" value="{{student.id}}" type="submit" formaction="update_entry/"><i class="far fa-edit"></i></button></td>
+            <td>
+              <button type="button" class="btn btn-danger" data-id="{{student.nsu_id}}" onclick="confirmDelete(this);"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr></form>
+          </tbody>
+          {% endfor %}
+
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div id="myModal" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure to delete this entry?</h4>
+          <!-- <button type="button" class="close" data-dismiss="modal">×</button> -->  <!-- top right close button -->
+        </div>
+  
+        <div class="modal-body">
+          <form method="POST" action="delete_entry/" id="form-delete-user" name="viewdetailsID" value="id">
+            {% csrf_token %}
+            <input type="hidden" name="id">
+          </form>
+          <strong style="color: red;">Caution: You can not retrieve the entry once deleted.</strong>
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" form="form-delete-user" class="btn btn-danger">Delete</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function confirmDelete(self) {
+    var id = self.getAttribute("data-id");
+ 
+    document.getElementById("form-delete-user").id.value = id;
+    $("#myModal").modal("show");
+  }
+  </script>
+
+{% endblock %}
