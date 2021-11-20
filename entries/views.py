@@ -236,7 +236,7 @@ def studentEntry(request):
     # checking if there is an entry for the selected id in DB > Financial_info
     if Financial_info.objects.filter(id=stu_uid).exists():
         stu_fin_info_obj = Financial_info.objects.get(id=stu_uid)  # fetching financial information
-        context['stu_financial'] = stu_fin_info_obj
+        context['stu_fin'] = stu_fin_info_obj
 
     # checking if there is any entry against the selected id in DB > Grade
     if Grade.objects.filter(id=stu_uid).exists():
@@ -281,3 +281,39 @@ def assignGrade(request):
             return redirect('dashboard')
     context = {'form1': form1,}
     return render(request, 'entries/assign_grade.html', context)
+
+
+def updateFinancialInfo(request):
+    if 'viewdetailsID' in request.POST:
+        stu_uid = request.POST.get('viewdetailsID')
+    
+        # store student's uuid for later use in the session
+        mydata['stu_uid'] = stu_uid
+
+        # create an entry against the 'stu_uid' in Hsc_equivlent model if it doesn't exist
+        if not Financial_info.objects.filter(id_id=stu_uid).exists():
+            student = Financial_info(id_id=stu_uid)
+            student.save()
+            print('does not exist')
+
+    # access student's uuid which was stored above
+    stu_uid = mydata['stu_uid']
+
+    student = Financial_info.objects.get(id_id=stu_uid)
+    form = Financial_info_form(instance=student)
+    
+    context = {'form' : form}
+
+    if request.method == 'POST':
+        form = Financial_info_form(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+
+            print(f'form saved')
+            print(stu_uid)
+
+            messages.success(request, f'Financial Info Updated.')
+            return redirect('student_entry')
+    else:
+        form = Hsc_equivlent_form()
+    return render(request, 'entries/update_financial_info.html', context)

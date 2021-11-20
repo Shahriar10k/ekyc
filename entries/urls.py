@@ -10,6 +10,7 @@ urlpatterns = [
     path('student_entry/update_personal_info/', views.updatePersonalInfo, name='update_personal_info'),
     path('student_entry/update_aca_hsc_equiv_info/', views.updateHSCEquivInfo, name='update_aca_hsc_equiv_info'),
     path('student_entry/update_aca_ssc_equiv_info/', views.updateSSCEquivInfo, name='update_aca_ssc_equiv_info'),
+    path('student_entry/update_financial_info/', views.updateFinancialInfo, name='update_financial_info'),
     path('', views.StudentList, name='StudentList'),
     path('student_entry/', views.studentEntry, name='student_entry'),
     path('assign_grade/', views.assignGrade, name='assign_grade'),

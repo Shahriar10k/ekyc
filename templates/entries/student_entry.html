@@ -35,6 +35,8 @@
                        aria-controls="nav-home" aria-selected="true">Profile</a>
                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
                        aria-controls="nav-profile" aria-selected="false">Academic Info</a>
+                    <a class="nav-item nav-link" id="nav-fin-info-tab" data-toggle="tab" href="#nav-fin-info" role="tab"
+                        aria-controls="nav-fin-info" aria-selected="false">Financial Info</a>
                     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
                        aria-controls="nav-contact" aria-selected="false">Grade History</a>
                 </div>
@@ -322,6 +324,45 @@
 
 
                 </div>
+
+                <div class="tab-pane fade" id="nav-fin-info" role="tabpanel" aria-labelledby="nav-fin-info-tab">
+
+                    <div class="col" style="float:left; width:50%;">
+                        <br>
+                        <h4><span class="middle">Financial Info</span>
+                            <form action="update_financial_info/" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-warning" name="viewdetailsID" value="{{stu_uid.id}}" type="submit"><i class="far fa-edit"></i></button>
+                            </form>
+                        </h4>
+                        <div class="profile-user-info">
+                            <div class="row">
+                                <div class="col"> Annual Income:</div>
+                                <div class="col-md-8">
+                                    <span> {{stu_fin.annual_income|default_if_none:"N/A"}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Earning Source:</div>
+
+                                <div class="col-md-8">
+                                    <span>  {{ stu_fin.earning_source|default_if_none:"N/A" }}  </span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"> Annual Expenditure:</div>
+
+                                <div class="col-md-8">
+                                    <span> {{ stu_fin.annual_expenditure|default_if_none:"N/A" }} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+
+
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
 
