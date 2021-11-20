@@ -243,4 +243,5 @@ modules.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm+all
 entries/migrations/
+customer/migrations/
 Pipfile
