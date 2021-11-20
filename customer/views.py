@@ -28,7 +28,7 @@ def createCustomer(request):
             #mydata['stu_uid'] = stu_uid
 
             messages.success(request, f'A New Customer Added.')
-            #return redirect('student_entry')
+            return redirect('CustomerList')
 
     context = {'form': form, }
 
@@ -42,3 +42,16 @@ def CustomerList(request):
 
     context = {'customer_list': customer_list, 'custFilter': custFilter}
     return render(request, 'customer/customer_list.html', context)
+
+
+# delete an entry
+def deleteCustomer(request):
+    if 'id' in request.POST:
+        cust_id = request.POST.get('id')
+        #print(stu_id)
+
+    customer = Customer_info.objects.get(id=cust_id)
+    customer.delete()
+
+    messages.success(request, f'Customer Entry Successfully Deleted.')
+    return redirect('CustomerList')

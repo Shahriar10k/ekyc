@@ -8,7 +8,7 @@ from django.core.validators import *
 class Customer_info(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField("Customer Name",max_length=500)
-    bin = models.IntegerField("Customer Business Identification Number(BIN)", validators=[MinLengthValidator(9)])
+    bin = models.CharField("Customer Business Identification Number(BIN)",max_length=9, validators=[MinLengthValidator(9)])
     email = models.EmailField("Customer Email", max_length=254)
     file = models.FileField("Scanned Picture/File", upload_to="files/%Y/%m/%d", blank=True, null=True)
 

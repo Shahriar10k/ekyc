@@ -52,7 +52,7 @@
             <td>{{customer.email}}</td>
             <td>{{customer.bin}}</td>
             <td><button class="btn btn-outline-info" name="viewdetailsID" value="{{customer.id}}" type="submit"><i class="far fa-eye"></i></button></td>
-            <td><button class="btn btn-outline-warning" name="viewdetailsID" value="{{customer.id}}" type="submit" formaction="update_entry/"><i class="far fa-edit"></i></button></td>
+            <td><button class="btn btn-outline-warning" name="viewdetailsID" value="{{customer.id}}" type="submit" formaction="update_customer/"><i class="far fa-edit"></i></button></td>
             <td>
               <button type="button" class="btn btn-danger" data-id="{{customer.id}}" onclick="confirmDelete(this);"><i class="fas fa-trash-alt"></i></button>
             </td>
@@ -75,7 +75,7 @@
         </div>
   
         <div class="modal-body">
-          <form method="POST" action="delete_entry/" id="form-delete-user" name="viewdetailsID" value="id">
+          <form method="POST" action="delete_customer/" id="form-delete-user" name="viewdetailsID" value="id">
             {% csrf_token %}
             <input type="hidden" name="id">
           </form>

@@ -6,4 +6,4 @@ class CustomerFilter(django_filters.FilterSet):
 
     class Meta:
         model = Customer_info
-        fields = ['id']
+        fields = ['name']

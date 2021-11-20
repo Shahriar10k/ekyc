@@ -5,5 +5,6 @@ urlpatterns = [
     
     path('', views.CustomerList, name='CustomerList'),
     path('create_customer/', views.createCustomer, name='create_customer'),
+    path('delete_customer/', views.deleteCustomer, name='delete_customer'),
     
 ]
