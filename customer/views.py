@@ -10,6 +10,8 @@ from customer.models import *
 
 # Create your views here.
 
+my_data = {}
+
 #method for customer create
 def createCustomer(request):
     form = Customer_info_form()
@@ -18,14 +20,6 @@ def createCustomer(request):
         form = Customer_info_form(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            #f_nsu_id = form1.cleaned_data['nsu_id']
-            
-            # fetch UUID of the student from database using nsu-id from form
-            #stu_obj = Student_info.objects.get(nsu_id=f_nsu_id)
-            #stu_uid = stu_obj.id
-            
-            # store student's uuid for later use in the session
-            #mydata['stu_uid'] = stu_uid
 
             messages.success(request, f'A New Customer Added.')
             return redirect('CustomerList')
@@ -55,3 +49,31 @@ def deleteCustomer(request):
 
     messages.success(request, f'Customer Entry Successfully Deleted.')
     return redirect('CustomerList')
+
+#update customer information
+def updateCustomer(request): 
+
+    #if POST coming from customer list "edit" button then fetch intance using uuid
+    if 'viewdetailsID' in request.POST:
+        uid = request.POST.get('viewdetailsID')
+        customer = Customer_info.objects.get(id=uid)
+        form = Customer_info_form(instance=customer)
+        my_data['cust_id'] = uid    #store uid for session
+        print(uid)
+    #if POST coming from editing the form then fetch instance using globally stored uid 
+    else:
+        uid = my_data['cust_id']
+        customer=Customer_info.objects.get(id=uid)
+        form = Customer_info_form(instance=customer)
+    context = {'form': form, }
+    
+
+    if request.method == 'POST' :
+        form = Customer_info_form(request.POST, request.FILES, instance=customer)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, "Customer Information Updated")
+            return redirect('CustomerList')
+
+    return render(request, 'customer/update_customer.html', context)
