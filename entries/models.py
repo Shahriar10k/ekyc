@@ -90,6 +90,8 @@ class Course(models.Model):
     course_title = models.CharField(max_length=100, blank= True, null=True)
     course_desc = models.TextField(max_length=100, blank= True, null=True)
     course_credit = models.IntegerField(validators=[MaxValueValidator(3), MinValueValidator(0)]) #included max value validator (<=3)  
+    def __str__(self):
+        return self.couse_code
 
 class Grade(models.Model):
     SEMESTER_NAME = (
@@ -119,6 +121,8 @@ class Grade(models.Model):
     semester = models.CharField(max_length=20,choices=SEMESTER_NAME, blank= True, null=True)
     year = models.IntegerField(blank= True, null=True)
     grade = models.CharField(max_length=10,choices=GRADE_CHOICE, blank= True, null=True)
+
+    
 
 class Financial_info(models.Model):
     id = models.OneToOneField(Student_info, on_delete= models.CASCADE, primary_key=True)

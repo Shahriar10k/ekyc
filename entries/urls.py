@@ -14,7 +14,4 @@ urlpatterns = [
     path('', views.StudentList, name='StudentList'),
     path('student_entry/', views.studentEntry, name='student_entry'),
     path('assign_grade/', views.assignGrade, name='assign_grade'),
-    #path('addentry', views.addentry, name='addentry'),
-    #path('editentry', views.editentry, name='editentry'),
-    #path('deleteentry', views.deleteentry, name='deleteentry),
 ]
