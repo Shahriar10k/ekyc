@@ -30,8 +30,8 @@
           <thead>
           <tr>
             <th scope="col">Name</th>
-            <th scope="col">BIN</th>
             <th scope="col">Email</th>
+            <th scope="col">BIN</th>
             <th scope="col">Access</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
@@ -51,7 +51,7 @@
             <td>{{customer.name}} </td>
             <td>{{customer.email}}</td>
             <td>{{customer.bin}}</td>
-            <td><button class="btn btn-outline-info" name="viewdetailsID" value="{{customer.id}}" type="submit"><i class="far fa-eye"></i></button></td>
+            <td><button class="btn btn-outline-info" name="viewdetailsID" value="{{customer.id}}" type="submit"><i class="fas fa-user-lock"></i></button></td>
             <td><button class="btn btn-outline-warning" name="viewdetailsID" value="{{customer.id}}" type="submit" formaction="update_customer/"><i class="far fa-edit"></i></button></td>
             <td>
               <button type="button" class="btn btn-danger" data-id="{{customer.id}}" onclick="confirmDelete(this);"><i class="fas fa-trash-alt"></i></button>
