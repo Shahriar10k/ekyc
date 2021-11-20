@@ -48,7 +48,25 @@
             <a class="nav-link" href="#"></a>
           </li>
           {% endif %} 
-          
+
+          <!--If logged in CustomerList will take to Student List-->
+          {% if user.is_authenticated %}
+            <li 
+              {% if 'dashboard' in request.path %}
+              class="nav-item active mr-3"
+              {% else %}
+              class="nav-item  mr-3"
+              {% endif %}
+            >
+            <li {% if 'CustomerList' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
+            <a class="nav-link" href="{% url 'CustomerList' %}">Customer List</a>
+          </li>
+          {% else %} 
+          <li>
+            <a class="nav-link" href="#"></a>
+          </li>
+          {% endif %}  
+
         </ul>
 
         <ul class="navbar-nav ml-auto">

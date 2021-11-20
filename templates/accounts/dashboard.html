@@ -31,7 +31,7 @@
             </thead>
             <tbody>
               <tr>
-                <td>Create An Entry </td>
+                <td>Create A Student Entry </td>
                 <td>
                   <a class="btn btn-outline-success" href="{% url 'create_entry' %}"><i class="fas fa-plus"></i></a>
                 </td>
@@ -47,13 +47,25 @@
                 <td>
                   <a class="btn btn-outline-success" href="{% url 'assign_grade' %}"><i class="fas fa-plus"></i></a>
                 </td>
+              </tr> 
+              <tr>
+                <td>Add A Customer</td>
+                <td>
+                  <a class="btn btn-outline-success" href="{% url 'create_customer' %}"><i class="fas fa-plus"></i></a>
+                </td>
               </tr>            
               <tr>
                 <td>View Complete Student List </td>
                 <td>
                   <a class="btn btn-outline-success" href="{% url 'StudentList' %}"><i class="far fa-eye"></i></a>
                 </td>
-              </tr>             
+              </tr>  
+              <tr>
+                <td>View Complete Customer List </td>
+                <td>
+                  <a class="btn btn-outline-success" href="{% url 'CustomerList' %}"><i class="far fa-eye"></i></a>
+                </td>
+              </tr>            
             </tbody>
           </table>
         </div>
