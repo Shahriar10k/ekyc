@@ -69,7 +69,7 @@ def updateEntry(request):
 
     return render(request, 'entries/update_entries.html', context)
 
-
+# delete an entry
 def deleteEntry(request):
     if 'id' in request.POST:
         stu_id = request.POST.get('id')
@@ -114,6 +114,81 @@ def updatePersonalInfo(request):
         form = Personal_info_form()
     return render(request, 'entries/update_personal_info.html', context)
 
+# update ssc/equivalent academic info
+def updateSSCEquivInfo(request):
+    if 'viewdetailsID' in request.POST:
+        stu_uid = request.POST.get('viewdetailsID')
+
+        print(stu_uid)
+    
+        # store student's uuid for later use in the session
+        mydata['stu_uid'] = stu_uid
+
+        # create an entry against the 'stu_uid' in Ssc_equivlent model if it doesn't exist
+        if not Ssc_equivlent.objects.filter(id_id=stu_uid).exists():
+            student = Ssc_equivlent(id_id=stu_uid)
+            student.save()
+            print('does not exist')
+
+    # access student's uuid which was stored above
+    stu_uid = mydata['stu_uid']
+
+    student = Ssc_equivlent.objects.get(id_id=stu_uid)
+    form = Ssc_equivlent_form(instance=student)
+    
+    context = {'form' : form}
+
+    if request.method == 'POST':
+        form = Ssc_equivlent_form(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+
+            print(f'form saved')
+            print(stu_uid)
+
+            messages.success(request, f'SSC/Equivalent Academic Information Updated.')
+            return redirect('student_entry')
+    else:
+        form = Ssc_equivlent_form()
+    return render(request, 'entries/update_aca_ssc_equiv_info.html', context)
+
+# update hsc/equivalent academic info
+def updateHSCEquivInfo(request):
+    if 'viewdetailsID' in request.POST:
+        stu_uid = request.POST.get('viewdetailsID')
+
+        print(stu_uid)
+    
+        # store student's uuid for later use in the session
+        mydata['stu_uid'] = stu_uid
+
+        # create an entry against the 'stu_uid' in Hsc_equivlent model if it doesn't exist
+        if not Hsc_equivlent.objects.filter(id_id=stu_uid).exists():
+            student = Hsc_equivlent(id_id=stu_uid)
+            student.save()
+            print('does not exist')
+
+    # access student's uuid which was stored above
+    stu_uid = mydata['stu_uid']
+
+    student = Hsc_equivlent.objects.get(id_id=stu_uid)
+    form = Hsc_equivlent_form(instance=student)
+    
+    context = {'form' : form}
+
+    if request.method == 'POST':
+        form = Hsc_equivlent_form(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+
+            print(f'form saved')
+            print(stu_uid)
+
+            messages.success(request, f'HSC/Equivalent Academic Information Updated.')
+            return redirect('student_entry')
+    else:
+        form = Hsc_equivlent_form()
+    return render(request, 'entries/update_aca_hsc_equiv_info.html', context)
 
 # filter for student list
 def StudentList(request):

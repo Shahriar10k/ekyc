@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, widgets
 from .models import *
 from django import forms
 
@@ -52,13 +52,45 @@ class Personal_info_form(ModelForm):
 class Ssc_equivlent_form(ModelForm):
     class Meta:
         model = Ssc_equivlent
-        fields = '__all__'
+        fields = [
+            'school_name',
+            'session',
+            'passing_year',
+            'gpa',
+            'medium',
+            'board',
+            'id'
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super(Ssc_equivlent_form, self).__init__(*args, **kwargs)
+                
+        self.fields['id'].label = "Student ID"
+        self.fields['school_name'].label = "School Name"
+        self.fields['passing_year'].label = "Passing Year"
+        self.fields['gpa'].label = "GPA"
         
 
 class Hsc_equivlent_form(ModelForm):
     class Meta:
         model = Hsc_equivlent
-        fields = '__all__'
+        fields = [
+            'college_name',
+            'session',
+            'passing_year',
+            'gpa',
+            'medium',
+            'board',
+            'id'
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super(Hsc_equivlent_form, self).__init__(*args, **kwargs)
+                
+        self.fields['id'].label = "Student ID"
+        self.fields['college_name'].label = "College Name"
+        self.fields['passing_year'].label = "Passing Year"
+        self.fields['gpa'].label = "GPA"
     
 
 class Course_form(ModelForm):
