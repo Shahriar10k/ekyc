@@ -90,7 +90,7 @@
                                 <div class="col"> Current CGPA:</div>
 
                                 <div class="col-md-8">
-                                    <span>2.00</span>
+                                    <span>{{stu_cgpa}}</span>
                                 </div>
                             </div>
 
@@ -98,7 +98,7 @@
                                 <div class="col"> Credit Passed:</div>
 
                                 <div class="col-md-8">
-                                    <span>104</span>
+                                    <span>{{stu_credit}}</span>
                                 </div>
                             </div>
                         </div>
@@ -338,7 +338,7 @@
                         <div class="profile-user-info">
                             <div class="row">
                                 <div class="col"> Annual Income:</div>
-                                <div class="col-md-8">
+                                <div class="col-md-7">
                                     <span> {{stu_fin.annual_income|default_if_none:"N/A"}}</span>
                                 </div>
                             </div>
@@ -346,7 +346,7 @@
                             <div class="row">
                                 <div class="col"> Earning Source:</div>
 
-                                <div class="col-md-8">
+                                <div class="col-md-7">
                                     <span>  {{ stu_fin.earning_source|default_if_none:"N/A" }}  </span>
                                 </div>
                             </div>
@@ -354,7 +354,7 @@
                             <div class="row">
                                 <div class="col"> Annual Expenditure:</div>
 
-                                <div class="col-md-8">
+                                <div class="col-md-7">
                                     <span> {{ stu_fin.annual_expenditure|default_if_none:"N/A" }} </span>
                                 </div>
                             </div>

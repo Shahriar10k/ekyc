@@ -218,6 +218,11 @@ def studentEntry(request):
     stu_u_obj = Student_info.objects.get( id=stu_uid )
     context = { 'stu_uid': stu_u_obj }
 
+    # CGPA Calculation & passing to template
+    cgpaCalculation(stu_uid)
+    context['stu_cgpa'] = mydata['cgpa']
+    context['stu_credit'] = mydata['credit']
+
     # checking if there is an entry for the selected id in DB > Personal_info
     if Personal_info.objects.filter(id=stu_uid).exists():
         stu_per_info_obj = Personal_info.objects.get(id=stu_uid)  # fetching student's personal information
@@ -317,3 +322,48 @@ def updateFinancialInfo(request):
     else:
         form = Hsc_equivlent_form()
     return render(request, 'entries/update_financial_info.html', context)
+
+# Calculate total credit passed & cgpa
+def cgpaCalculation(uid):
+    grade_points = Grade.objects.filter(id=uid)
+
+    point_table = {
+        'A': 4.00,
+        'A-': 3.70,
+        'B+': 3.30,
+        'B': 3.00,
+        'B-': 2.70,
+        'C+':2.30,
+        'C': 2.00,
+        'C-': 1.70,
+        'D+': 1.30,
+        'D': 1.00,
+        'F': 0.00,
+    }
+
+    credit_total= 0
+    gpa_total = 0
+    value = 0
+    cgpa = 0
+
+    for point in grade_points:                  #Grade*credit 4*3=12  12+11.1+12=35.1/9=3.9
+        grade=point.grade
+
+        if grade == 'W':
+            pass
+        elif grade == 'I':
+            pass
+        else:
+            grade_point = point_table[grade]
+            credit_count = point.course_code.course_credit
+
+            credit_total += credit_count
+            gpa_total += grade_point*credit_count
+
+    if credit_total !=0:
+        cgpa = gpa_total/credit_total
+
+    value = "{:.2f}".format(cgpa)
+
+    mydata['cgpa']=value
+    mydata['credit'] = credit_total
