@@ -12,20 +12,20 @@
           <div class="card">
             <div class="card-header bg-primary text-white">
               <h4>
-                <i class=""></i> Add Customer Features </h4>
+                <i class=""></i> Customer Manage Access </h4>
             </div>
             <div class="card-body">
 
                 
                 {% include 'partials/_alerts.html' %} 
-                <form action= "{% url 'create_customer' %}" method="POST" enctype="multipart/form-data">
+                <form action= "{% url 'customer_access' %}" method="POST" enctype="multipart/form-data">
                   {% csrf_token %} 
                 <div class="form-group">                    
                     <!-- check box for student info -->              
-                    <input type="checkbox" id="" name="Nsu ID" value="nsu_id">
+                    <input type="checkbox" id="" name="nsu_id" value="">
                     <label for="Nsu ID"> Nsu ID</label><br>
-                    <input type="checkbox" id="" name="Frist name" value="first_name">
-                    <label for="Frist name"> Frist name</label><br>
+                    <input type="checkbox" id="" name="First name" value="first_name">
+                    <label for="Frist name"> First name</label><br>
                     <input type="checkbox" id="" name="Last name" value="last_name">
                     <label for="Last name"> Last name</label><br>
                     <input type="checkbox" id="" name="Department" value="dept">  

@@ -78,6 +78,6 @@ def updateCustomer(request):
 
     return render(request, 'customer/update_customer.html', context)
 
-def customerFeatur(request):
+def customerFeature(request):
     context = {}
-    return render(request, 'customer/customer_feature_access.html', context)
+    return render(request, 'customer/customer_access.html', context)

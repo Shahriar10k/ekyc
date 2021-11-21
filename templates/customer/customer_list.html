@@ -53,7 +53,7 @@
             <td>{{customer.email}}</td>
             <td>{{customer.bin}}</td>
             <td><button class="btn btn-outline-info" name="viewdetailsID" value="" formaction="{{customer.file.url}}" type="submit" ><i class="fas fa-file-alt"></i></button></td>
-            <td><button class="btn btn-outline-info" name="viewdetailsID" value="{{customer.id}}" formaction="{% url 'customer_feature_access' %}" type="submit"><i class="fas fa-user-lock"></i></button></td>
+            <td><button class="btn btn-outline-info" name="viewdetailsID" value="{{customer.id}}" formaction="{% url 'customer_access' %}" type="submit"><i class="fas fa-user-lock"></i></button></td>
             <td><button class="btn btn-outline-warning" name="viewdetailsID" value="{{customer.id}}" type="submit" formaction="update_customer/"><i class="far fa-edit"></i></button></td>
             <td>
               <button type="button" class="btn btn-danger" data-id="{{customer.id}}" onclick="confirmDelete(this);"><i class="fas fa-trash-alt"></i></button>
