@@ -1039,13 +1039,15 @@ pre {
   background-color: transparent; }
   .table th,
   .table td {
-    padding: 0.75rem;
+    padding: 0.55rem;
     text-align: center;
     vertical-align: top;
-    border-top: 1px solid #dee2e6; }
+    border-top: 1px solid #dee2e6; 
+  }
   .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6; }
+    /* border-bottom: 2px solid #dee2e6;  */
+  }
   .table tbody + tbody {
     border-top: 2px solid #dee2e6; }
   .table .table {
@@ -4279,7 +4281,7 @@ button.close {
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #015668 !important; }
+  background-image: linear-gradient(#015668, #346772); !important; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
