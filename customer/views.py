@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls.base import reverse_lazy
 from django.contrib import messages
+import customer
 
 from customer.filters import CustomerFilter
 from .models import *
@@ -77,3 +78,35 @@ def updateCustomer(request):
             return redirect('CustomerList')
 
     return render(request, 'customer/update_customer.html', context)
+
+def manageAccessPermission(request):
+    if 'viewdetailsID' in request.POST:
+        cust_id = request.POST.get('viewdetailsID')
+        print(cust_id)
+    
+        my_data['cust_id'] = cust_id                # store customer's id for later use in the session
+
+        # create an entry against the 'cust_id' in Customer_access_permission model if it doesn't exist
+        if not Customer_access_permission.objects.filter(customer_id_id=cust_id).exists():
+            customer = Customer_access_permission(customer_id_id=cust_id)
+            customer.save()
+            print('a new Customer_access_permission instance created')
+
+    else:
+        cust_id = my_data['cust_id']             # access customer's uuid which was stored above
+
+    customer = Customer_access_permission.objects.get(customer_id=cust_id)
+    form = Customer_access_permission_form(instance=customer)
+    
+    context = {'form': form}
+
+    if request.method == 'POST':
+        form = Customer_access_permission_form(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, f'Customer Access Permission Updated.')
+            return redirect('CustomerList')
+    else:
+        form = Customer_access_permission_form()
+    return render(request, 'customer/manage_access_permission.html', context)
