@@ -10,7 +10,9 @@ class Customer_info_form(ModelForm):
         fields = '__all__'
     def __init__(self, *args, **kwargs):
         super(Customer_info_form, self).__init__(*args, **kwargs)
+        
         self.fields['file'].widget.attrs.update({'class': 'btn btn-outline-secondary '})
+        self.fields['file'].required = True
 
 class Customer_access_permission_form(ModelForm):
     class Meta:
