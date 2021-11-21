@@ -13,7 +13,7 @@ class Customer_info(models.Model):
     file = models.FileField("Scanned Picture/File", upload_to="files/%Y/%m/%d", blank=True, null=True)
 
 class Customer_access_info(models.Model):
-    customer_id = models.ForeignKey(Customer_info, on_delete=models.CASCADE)
+    customer_id = models.OneToOneField(Customer_info, on_delete=models.CASCADE)
     nsu_ID = models.BooleanField(default=False)
     first_name = models.BooleanField(default=False)
     last_name = models.BooleanField(default=False)
