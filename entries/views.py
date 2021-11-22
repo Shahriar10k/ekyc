@@ -43,10 +43,11 @@ def updateEntry(request):
         uid = request.POST.get('viewdetailsID')
         student = Student_info.objects.get(id=uid)
         form1 = Student_info_form(instance=student)
+        mydata['stu_uid'] = uid
     #if POST coming from editing the form then fetch instance using nsu id 
     else:
-        nsu_id= request.POST.get('nsu_id')
-        student=Student_info.objects.get(nsu_id=nsu_id)
+        uid = mydata['stu_uid']
+        student = Student_info.objects.get(id=uid)
         form1 = Student_info_form(instance=student)
     context = {'form1': form1, }
     
@@ -65,7 +66,7 @@ def updateEntry(request):
             stu_u_obj = Student_info.objects.get(id=stu_uid)
             context = {'stu_uid': stu_u_obj}
             messages.success(request, "Student Entry Updated")
-            return render(request, 'entries/student_entry.html', context)
+            return redirect('student_entry')
 
     return render(request, 'entries/update_entries.html', context)
 
