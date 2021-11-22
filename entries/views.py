@@ -44,7 +44,7 @@ def updateEntry(request):
         student = Student_info.objects.get(id=uid)
         form1 = Student_info_form(instance=student)
         mydata['stu_uid'] = uid
-    #if POST coming from editing the form then fetch instance using nsu id 
+    #if POST coming from editing the form then fetch instance using globally stored uuid
     else:
         uid = mydata['stu_uid']
         student = Student_info.objects.get(id=uid)
@@ -368,3 +368,33 @@ def cgpaCalculation(uid):
 
     mydata['cgpa']=value
     mydata['credit'] = credit_total
+
+#Edit Grade Information
+def editGrade(request):
+    #if POST coming from grade list "edit" button then fetch intance using gaid
+    if 'grade_assign_id' in request.POST:
+        gaid = request.POST.get('grade_assign_id')
+        grade = Grade.objects.get(ga_id = gaid)
+        uid = grade.id_id
+        mydata['stu_uid'] = uid
+        form = Grade_form(instance=grade)
+        mydata['ga_id'] = gaid
+
+    
+    #if POST coming from editing the form then fetch instance using gaid 
+    else:
+        gaid = mydata['ga_id']
+        grade = Grade.objects.get(ga_id = gaid)
+        uid = grade.id_id
+        mydata['stu_uid'] = uid
+        form = Grade_form(instance= grade)
+    context = {'form' : form}
+
+    if request.method == 'POST':
+        form = Grade_form(request.POST, instance = grade)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f"Grade Information Updated")
+            return redirect("student_entry")
+
+    return render(request, 'entries/edit_grade.html', context)
