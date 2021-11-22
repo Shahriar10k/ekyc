@@ -50,7 +50,11 @@ html {
 @-ms-viewport {
   width: device-width; }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+footer {
+  margin-top: auto;
+}
+
+article, aside, figcaption, figure, header, hgroup, main, nav, section {
   display: block; }
 
 body {
@@ -61,7 +65,11 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-color: #fff; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
