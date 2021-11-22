@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section id="register" class="bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4>
+                            <i class="far fa-edit"></i> Manage Access Control
+                        </h4>
+                    </div>
+                    <div class="card-body">
+
+
+                        {% include 'partials/_alerts.html' %}
+                        <form action="{% url 'manage_access_control' %}" method="POST" enctype="multipart/form-data">
+
+                            {% csrf_token %}
+
+                            <div style="visibility: hidden; display: none;">
+                                {{form.customer_id}}
+                            </div>
+
+                            <fieldset>
+                                <legend style="border-bottom: 1px solid black;">Personal Information</legend>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        {{form.nsu_id|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{form.first_name|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{form.last_name|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        {{form.date_of_birth|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{form.father_name|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{form.mother_name|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        {{form.gender|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{form.religion|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{form.citizenship|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        {{form.marital_status|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{form.photo|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <hr>
+
+                            <fieldset>
+                                <legend style="border-bottom: 1px solid black;">Academic Information</legend>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        {{form.academic_info|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <hr>
+
+                            <fieldset>
+                                <legend style="border-bottom: 1px solid black;">Medical Information</legend>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        {{form.blood_group|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-8">
+                                        {{form.covid19_vax_status|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <hr>
+
+                            <fieldset>
+                                <legend style="border-bottom: 1px solid black;">Contact Information</legend>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        {{form.contact_number|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{form.email|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{form.address|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <hr>
+
+                            <fieldset>
+                                <legend style="border-bottom: 1px solid black;">Financial Information</legend>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        {{form.earning_source|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{form.annual_income|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {{form.annual_expenditure|as_crispy_field:"bootstrap"}}
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <hr>
+
+                            <div style="display: inline-block; float: right;">
+                                <input type="reset" value="Reset" name="Reset" class="btn btn-outline-warning">
+                                <input type="submit" value="Submit" name="Submit" class="btn btn-outline-success">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -79,7 +79,7 @@ def updateCustomer(request):
 
     return render(request, 'customer/update_customer.html', context)
 
-def manageAccessPermission(request):
+def manageAccessControl(request):
     if 'viewdetailsID' in request.POST:
         cust_id = request.POST.get('viewdetailsID')
         print(cust_id)
@@ -105,8 +105,8 @@ def manageAccessPermission(request):
         if form.is_valid():
             form.save()
 
-            messages.success(request, f'Customer Access Permission Updated.')
+            messages.success(request, f'Access Control Information Updated.')
             return redirect('CustomerList')
     else:
         form = Customer_access_permission_form()
-    return render(request, 'customer/manage_access_permission.html', context)
+    return render(request, 'customer/manage_access_control.html', context)
