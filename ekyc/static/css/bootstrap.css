@@ -52,6 +52,7 @@ html {
 
 footer {
   margin-top: auto;
+  display: block;
 }
 
 article, aside, figcaption, figure, header, hgroup, main, nav, section {
