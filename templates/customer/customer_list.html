@@ -69,7 +69,7 @@
     </div>
   </section>
 
-  <div id="myModal" class="modal">
+  <div id="deleteConfimationModal" class="modal">
     <div class="modal-dialog">
       <div class="modal-content">
   
@@ -79,7 +79,7 @@
         </div>
   
         <div class="modal-body">
-          <form method="POST" action="delete_customer/" id="form-delete-user" name="viewdetailsID" value="id">
+          <form method="POST" action="delete_customer/" id="form-delete-customer" name="viewdetailsID" value="id">
             {% csrf_token %}
             <input type="hidden" name="id">
           </form>
@@ -88,7 +88,7 @@
   
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" form="form-delete-user" class="btn btn-danger">Delete</button>
+          <button type="submit" form="form-delete-customer" class="btn btn-danger">Delete</button>
         </div>
   
       </div>
@@ -99,8 +99,8 @@
     function confirmDelete(self) {
     var id = self.getAttribute("data-id");
  
-    document.getElementById("form-delete-user").id.value = id;
-    $("#myModal").modal("show");
+    document.getElementById("form-delete-customer").id.value = id;
+    $("#deleteConfimationModal").modal("show");
   }
   </script>
 
