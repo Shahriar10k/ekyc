@@ -384,6 +384,7 @@
                                         <th scope="col">Course Title</th>
                                         <th scope="col">Grade</th>
                                         <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
                                     </tr>
                                 </thead>
 
@@ -399,6 +400,9 @@
                                         <td>
                                             <form method="POST"> {% csrf_token %} <button class="btn btn-secondary" name="grade_assign_id" value="{{grade.ga_id}}" type="submit"
                                                 formaction="{% url 'edit_grade' %}"><i class="far fa-edit"></i></button></form>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-id="{{grade.ga_id}}" onclick="confirmDelete(this);"><i class="fas fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                     {% endfor %}
@@ -419,4 +423,41 @@
     </div>
 </div>
 </section>
+
+<div id="deleteConfimationModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Are you sure to delete this grade entry?</h4>
+                <!-- <button type="button" class="close" data-dismiss="modal">×</button> -->
+                <!-- top right close button -->
+            </div>
+
+            <div class="modal-body">
+                <form method="POST" action="delete_grade/" id="form-delete-grade" name="viewdetailsID" value="id">
+                    {% csrf_token %}
+                    <input type="hidden" name="id">
+                </form>
+                <strong style="color: red;">Caution: You can not retrieve it once deleted.</strong>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" form="form-delete-grade" class="btn btn-danger">Delete</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmDelete(self) {
+        var id = self.getAttribute("data-id");
+
+        document.getElementById("form-delete-grade").id.value = id;
+        $("#deleteConfimationModal").modal("show");
+    }
+</script>
+
 {% endblock %}

@@ -398,3 +398,21 @@ def editGrade(request):
             return redirect("student_entry")
 
     return render(request, 'entries/edit_grade.html', context)
+
+# delete a grade entry
+def deleteGrade(request):
+    if 'id' in request.POST:
+        ga_id = request.POST.get('id')
+        #print(ga_id)
+
+    grade = Grade.objects.get(ga_id=ga_id)
+    stu_uid = grade.id.id
+
+    grade.delete()
+
+    print(stu_uid)
+
+    mydata['stu_uid'] = stu_uid
+
+    messages.success(request, f'Grade Entry Successfully Deleted.')
+    return redirect('student_entry')
