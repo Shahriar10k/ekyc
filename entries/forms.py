@@ -11,6 +11,10 @@ class Student_info_form(ModelForm):
         super(Student_info_form, self).__init__(*args, **kwargs)
         self.fields['photo'].widget.attrs.update({'class': 'btn btn-outline-secondary '})
     
+        self.fields['nsu_id'].label = "Student ID"
+        self.fields['first_name'].label = "First Name"
+        self.fields['last_name'].label = "Last Name"
+        self.fields['dept'].label = "Department"
 
 class Personal_info_form(ModelForm):
     GENDER = (
@@ -99,11 +103,35 @@ class Course_form(ModelForm):
         model = Course
         fields = '__all__'
 
+    
+    def __init__(self, *args, **kwargs):
+        super(Course_form, self).__init__(*args, **kwargs)
+
+        self.fields['couse_code'].label = "Code"
+        self.fields['course_title'].label = "Title"
+        self.fields['course_desc'].label = "Description"
+        self.fields['course_credit'].label = "Credit"
+
 class Grade_form(ModelForm):
 
     class Meta:
         model = Grade
         fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(Grade_form, self).__init__(*args, **kwargs)
+
+        self.fields['id'].label = "Student ID"
+        self.fields['course_code'].label = "Course Code"
+    
+
+    id = forms.ModelChoiceField(
+        queryset = Student_info.objects.all().order_by('nsu_id'),
+    )
+    course_code = forms.ModelChoiceField(
+        queryset = Course.objects.all().order_by('couse_code'),
+        widget = forms.TextInput()
+    )
 
 class Financial_info_form(ModelForm):
     class Meta:

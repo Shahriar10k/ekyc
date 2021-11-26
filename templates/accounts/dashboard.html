@@ -1,78 +1,110 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+
+{% load site_info %}
 
 {% block title %} | Dashboard {% endblock %}
 
-{% block content %} 
+{% block content %}
 
 <section id="showcase-inner" class="py-5 text-white">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h1 class="display-4">Admin Dashboard</h1>
-          <p class="lead">Manage Student Data </p>
-        </div>
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4">Admin Dashboard</h1>
+        <p class="lead">Manage Student Data </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!--Alerts-->
-  {% include 'partials/_alerts.html' %} 
+<!--Alerts-->
+{% include 'partials/_alerts.html' %}
 
-  <section id="dashboard" class="py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Welcome {{ user.first_name}} </h2>
-          <br>
-          <br>
-          <table class="table">
-            <thead>
+<section id="dashboard" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Welcome, {{user.first_name}} {{user.last_name}} </h2>
+        <br>
+        <br>
+        
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-around;">
+          
+          <div class="card" style="flex-basis: 250px; margin: 10px;">
+            <div class="card-header">
+              <h5 class="card-title" style="text-align: center;">Total Students</h5>
+            </div>
+            <div class="card-body">
+              <h5 style="text-align: center;"><a href="{% url 'StudentList' %}">{% total_students %}</a></h5>
+            </div>
+          </div>
+          
+          <div class="card" style="flex-basis: 250px; margin: 10px;">
+            <div class="card-header">
+              <h5 class="card-title" style="text-align: center;">Total Customers</h5>
+            </div>
+            <div class="card-body">
+              <h5 style="text-align: center;"><a href="{% url 'CustomerList' %}">{% total_customers %}</a></h5>
+            </div>
+          </div>
+
+          <div style="flex-basis: 450px; margin: 10px;">
+            <table class="table">
+              <thead>
                 <tr>
-                    <th scope="col" colspan="2">Admin Tools</th>
+                  <th scope="col" colspan="2">Admin Tools</th>
                 </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="text-align: left;">Create A Student Entry </td>
-                <td>
-                  <a class="btn btn-outline-success" href="{% url 'create_entry' %}" style="text-align: center;"><i class="fas fa-plus"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td style="text-align: left;"> Create A Course </td>
-                <td>
-                  <a class="btn btn-outline-success" href="{% url 'create_course' %}" style="text-align: center;"><i class="fas fa-plus"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td style="text-align: left;">Assign Grade </td>
-                <td>
-                  <a class="btn btn-outline-success" href="{% url 'assign_grade' %}" style="text-align: center;"><i class="fas fa-plus"></i></a>
-                </td>
-              </tr> 
-              <tr>
-                <td style="text-align: left;">Add A Customer</td>
-                <td>
-                  <a class="btn btn-outline-success" href="{% url 'create_customer' %}" style="text-align: center;"><i class="fas fa-plus"></i></a>
-                </td>
-              </tr>            
-              <tr>
-                <td style="text-align: left;">View Complete Student List </td>
-                <td>
-                  <a class="btn btn-outline-success" href="{% url 'StudentList' %}" style="text-align: center;"><i class="far fa-eye"></i></a>
-                </td>
-              </tr>  
-              <tr>
-                <td style="text-align: left;">View Complete Customer List </td>
-                <td>
-                  <a class="btn btn-outline-success" href="{% url 'CustomerList' %}" style="text-align: center;"><i class="far fa-eye"></i></a>
-                </td>
-              </tr>            
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align: left;">Create a Student Entry</td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'create_entry' %}" style="text-align: center;"><i
+                        class="fas fa-plus"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">Add a Course</td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'create_course' %}" style="text-align: center;"><i
+                        class="fas fa-plus"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">Assign a Grade</td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'assign_grade' %}" style="text-align: center;"><i
+                        class="fas fa-plus"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">Add a Customer</td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'create_customer' %}" style="text-align: center;"><i
+                        class="fas fa-plus"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">View Complete Student List </td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'StudentList' %}" style="text-align: center;"><i
+                        class="far fa-eye"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">View Complete Customer List </td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'CustomerList' %}" style="text-align: center;"><i
+                        class="far fa-eye"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-{% endblock %} 
+{% endblock %}

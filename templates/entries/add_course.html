@@ -1,40 +1,58 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 <title>{% block title %} | Create Course {% endblock %}</title>
 
 {% load crispy_forms_tags %}
 
-{% block content %} 
+{% block content %}
 
 
 <section id="register" class="bg-light py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mx-auto">
-          <div class="card">
-            <div class="card-header bg-primary text-white">
-              <h4>
-                <i class="fas fa-folder-plus"></i>  Add A Course  </h4>
-            </div>
-            <div class="card-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h4>
+              <i class="fas fa-folder-plus"></i> Add a Course
+            </h4>
+          </div>
+          <div class="card-body">
 
-                
-                {% include 'partials/_alerts.html' %} 
-                <form action= "{% url 'create_course' %}" method="POST" enctype="multipart/form-data">
-                  {% csrf_token %} 
-                <div class="form-group">
-                  {{form1|crispy}}                 
-                  
-            </div>
-                
-                <input type="submit" value="Submit" class="btn btn-outline-secondary">
-              </form>
-            </div>
+
+            {% include 'partials/_alerts.html' %}
+            <form action="{% url 'create_course' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-6">
+                  {{form1.couse_code|as_crispy_field:"bootstrap"}}
+                </div>
+                <div class="col-sm-6">
+                  {{form1.course_credit|as_crispy_field:"bootstrap"}}
+                </div>
+              </div>
+              <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-12">
+                  {{form1.course_title|as_crispy_field:"bootstrap"}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  {{form1.course_desc|as_crispy_field:"bootstrap"}}
+                </div>
+              </div>
+
+              <hr>
+
+              <input type="submit" value="Submit" class="btn btn-outline-secondary">
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 
-{% endblock %} 
+{% endblock %}
