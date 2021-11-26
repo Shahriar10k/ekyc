@@ -28,84 +28,80 @@
         <br>
         <br>
         
-        <div class="card" style="width: 30vw; float: left;">
-          <div class="card-header">
-            <h5 class="card-title">Site Information</h5>
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-around;">
+          
+          <div class="card" style="flex-basis: 250px; margin: 10px;">
+            <div class="card-header">
+              <h5 class="card-title" style="text-align: center;">Total Students</h5>
+            </div>
+            <div class="card-body">
+              <h5 style="text-align: center;"><a href="{% url 'StudentList' %}">{% total_students %}</a></h5>
+            </div>
           </div>
-          <div class="card-body">
-            <table class="card-text">
-              <colgroup>
-                <col span="1" style="width: 80%;">
-                <col span="1" style="width: 20%;">
-              </colgroup>
+          
+          <div class="card" style="flex-basis: 250px; margin: 10px;">
+            <div class="card-header">
+              <h5 class="card-title" style="text-align: center;">Total Customers</h5>
+            </div>
+            <div class="card-body">
+              <h5 style="text-align: center;"><a href="{% url 'CustomerList' %}">{% total_customers %}</a></h5>
+            </div>
+          </div>
 
+          <div style="flex-basis: 450px; margin: 10px;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" colspan="2">Admin Tools</th>
+                </tr>
+              </thead>
               <tbody>
                 <tr>
-                  <td>Total Number of Student Entries:</td>
-                  <td style="text-align: right;">{% total_students %}</td>                
+                  <td style="text-align: left;">Create a Student Entry</td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'create_entry' %}" style="text-align: center;"><i
+                        class="fas fa-plus"></i></a>
+                  </td>
                 </tr>
-  
                 <tr>
-                  <td>Total Number of Registered Customers:</td>
-                  <td style="text-align: right;">{% total_customers %}</td>
+                  <td style="text-align: left;">Add a Course</td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'create_course' %}" style="text-align: center;"><i
+                        class="fas fa-plus"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">Assign a Grade</td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'assign_grade' %}" style="text-align: center;"><i
+                        class="fas fa-plus"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">Add a Customer</td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'create_customer' %}" style="text-align: center;"><i
+                        class="fas fa-plus"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">View Complete Student List </td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'StudentList' %}" style="text-align: center;"><i
+                        class="far fa-eye"></i></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">View Complete Customer List </td>
+                  <td>
+                    <a class="btn btn-outline-success" href="{% url 'CustomerList' %}" style="text-align: center;"><i
+                        class="far fa-eye"></i></a>
+                  </td>
                 </tr>
               </tbody>
             </table>
-            
           </div>
         </div>
-
-        <table class="table" style="width: 25vw; float: right;">
-          <thead>
-            <tr>
-              <th scope="col" colspan="2">Admin Tools</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="text-align: left;">Create a Student Entry</td>
-              <td>
-                <a class="btn btn-outline-success" href="{% url 'create_entry' %}" style="text-align: center;"><i
-                    class="fas fa-plus"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: left;">Add a Course</td>
-              <td>
-                <a class="btn btn-outline-success" href="{% url 'create_course' %}" style="text-align: center;"><i
-                    class="fas fa-plus"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: left;">Assign a Grade</td>
-              <td>
-                <a class="btn btn-outline-success" href="{% url 'assign_grade' %}" style="text-align: center;"><i
-                    class="fas fa-plus"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: left;">Add a Customer</td>
-              <td>
-                <a class="btn btn-outline-success" href="{% url 'create_customer' %}" style="text-align: center;"><i
-                    class="fas fa-plus"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: left;">View Complete Student List </td>
-              <td>
-                <a class="btn btn-outline-success" href="{% url 'StudentList' %}" style="text-align: center;"><i
-                    class="far fa-eye"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td style="text-align: left;">View Complete Customer List </td>
-              <td>
-                <a class="btn btn-outline-success" href="{% url 'CustomerList' %}" style="text-align: center;"><i
-                    class="far fa-eye"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
