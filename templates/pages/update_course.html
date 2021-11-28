@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+<title>{% block title %} | Update Course {% endblock %}</title>
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<section id="register" class="bg-light py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h4>
+              <i class="fas fa-folder-plus"></i> Update Course Information
+            </h4>
+          </div>
+          <div class="card-body">
+
+
+            {% include 'partials/_alerts.html' %}
+            <form action="{% url 'update_course' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-6">
+                  <b>Course Code: {{course.couse_code}}</b>
+                </div>
+              </div>
+              <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-6" style="visibility: hidden; display: none;">
+                  {{form.couse_code|as_crispy_field:"bootstrap"}}
+                </div>
+                <div class="col-sm-12">
+                  {{form.course_credit|as_crispy_field:"bootstrap"}}
+                </div>
+              </div>
+              <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-12">
+                  {{form.course_title|as_crispy_field:"bootstrap"}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  {{form.course_desc|as_crispy_field:"bootstrap"}}
+                </div>
+              </div>
+
+              <hr>
+
+              <input type="submit" value="Submit" class="btn btn-outline-secondary">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+<title>{% block title %} | Course List {% endblock %}</title>
+
+{% block content %}
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-6">Course List</h1>
+          <p class="lead">Search And Manage Course Data </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Alerts-->
+  {% include 'partials/_alerts.html' %}
+
+  <section id="dashboard" class="py-4">
+
+    <div class="container">
+      <div class="row">
+        <table class="table table-dark">
+          <form method="get">
+            {{coFilter.form}}
+
+          </form>
+        </table>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Credit</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+          </thead>
+
+          {% if course_list == none %}
+          <tr>
+            <td colspan="6">No entries to display.</td>
+          </tr>
+          {% endif %}
+          
+          {% for course in course_list %}
+          <form action="update_course" method="post" id="idpass">
+            {% csrf_token %}
+          <tr>
+            <td>{{course.couse_code}}</td>
+            <td>{{course.course_title}}</td>
+            <td>{{course.course_desc}}</td>
+            <td>{{course.course_credit}}</td>
+            <td><button class="btn btn-outline-warning" name="courseCode" value="{{course.couse_code}}" type="submit" formaction="update_course"><i class="far fa-edit"></i></button></td>
+            <td>
+              <button type="button" class="btn btn-danger" data-id="{{course.couse_code}}" onclick="confirmDelete(this);"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr></form>
+          </tbody>
+          {% endfor %}
+
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div id="deleteConfimationModal" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure to delete this course?</h4>
+          <!-- <button type="button" class="close" data-dismiss="modal">×</button> -->  <!-- top right close button -->
+        </div>
+  
+        <div class="modal-body">
+          <form method="POST" action="delete_course/" id="form-delete-course" name="courseCode" value="id">
+            {% csrf_token %}
+            <input type="hidden" name="id">
+          </form>
+          <strong style="color: red;">Caution: You can not retrieve the course once deleted.</strong>
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" form="form-delete-student" class="btn btn-danger">Delete</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function confirmDelete(self) {
+    var id = self.getAttribute("data-id");
+ 
+    document.getElementById("form-delete-course").id.value = id;
+    $("#deleteConfimationModal").modal("show");
+  }
+  </script>
+
+{% endblock %}
