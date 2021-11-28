@@ -44,3 +44,14 @@ def updateCourse(request):
             return redirect('course_list')
 
     return render(request, 'pages/update_course.html', context)
+
+def deleteCourse(request):
+    if 'id' in request.POST:
+        course_id = request.POST.get('id')
+        #print(stu_id)
+
+    course = Course.objects.get(couse_code=course_id)
+    course.delete()
+
+    messages.success(request, f'Course Successfully Deleted.')
+    return redirect('course_list')

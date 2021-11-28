@@ -77,7 +77,7 @@
         </div>
   
         <div class="modal-body">
-          <form method="POST" action="delete_course/" id="form-delete-course" name="courseCode" value="id">
+          <form method="POST" action="delete_course" id="form-delete-course" name="courseCode" value="id">
             {% csrf_token %}
             <input type="hidden" name="id">
           </form>
@@ -86,7 +86,7 @@
   
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" form="form-delete-student" class="btn btn-danger">Delete</button>
+          <button type="submit" form="form-delete-course" class="btn btn-danger">Delete</button>
         </div>
   
       </div>
