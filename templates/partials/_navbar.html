@@ -33,14 +33,7 @@
           <!--Highlight the page name e.g if in Home page then Home is highlighted-->
           <!--If logged in StudentList will take to Student List-->
           {% if user.is_authenticated %}
-            <li 
-              {% if 'dashboard' in request.path %}
-              class="nav-item active mr-3"
-              {% else %}
-              class="nav-item  mr-3"
-              {% endif %}
-            >
-            <li {% if 'StudentList' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
+            <li {% if 'entries' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
             <a class="nav-link" href="{% url 'StudentList' %}">Student List</a>
           </li>
           {% else %} 
@@ -51,14 +44,7 @@
 
           <!--If logged in CustomerList will take to Student List-->
           {% if user.is_authenticated %}
-            <li 
-              {% if 'dashboard' in request.path %}
-              class="nav-item active mr-3"
-              {% else %}
-              class="nav-item  mr-3"
-              {% endif %}
-            >
-            <li {% if 'CustomerList' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
+            <li {% if 'customer' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
             <a class="nav-link" href="{% url 'CustomerList' %}">Customer List</a>
           </li>
           {% else %} 
@@ -66,6 +52,17 @@
             <a class="nav-link" href="#"></a>
           </li>
           {% endif %}  
+
+          <!--If logged in CustomerList will take to Student List-->
+          {% if user.is_authenticated %}
+            <li {% if 'course_list' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item  mr-3" {% endif %}>
+            <a class="nav-link" href="{% url 'course_list' %}">Course List</a>
+          </li>
+          {% else %} 
+          <li>
+            <a class="nav-link" href="#"></a>
+          </li>
+          {% endif %} 
 
         </ul>
 
