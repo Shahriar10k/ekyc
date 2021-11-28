@@ -259,22 +259,6 @@ def studentEntry(request):
 #   pass
 #  return render(request, 'student_list/Student_Profile.html')
 
-
-def createCourse(request):
-    form1 = Course_form()
-
-    if request.method == 'POST':
-        form1 = Course_form(request.POST)
-        if form1.is_valid():
-            form1.save()
-
-            messages.success(request, "Course Information Added.")
-            return redirect('dashboard')
-
-    context = {'form1': form1, }
-
-    return render(request, 'entries/add_course.html', context)
-
 def assignGrade(request):
     form1 = Grade_form()
 

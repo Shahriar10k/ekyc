@@ -55,3 +55,18 @@ def deleteCourse(request):
 
     messages.success(request, f'Course Successfully Deleted.')
     return redirect('course_list')
+
+def createCourse(request):
+    form1 = Course_form()
+
+    if request.method == 'POST':
+        form1 = Course_form(request.POST)
+        if form1.is_valid():
+            form1.save()
+
+            messages.success(request, "Course Information Added.")
+            return redirect('course_list')
+
+    context = {'form1': form1, }
+
+    return render(request, 'pages/add_course.html', context)
